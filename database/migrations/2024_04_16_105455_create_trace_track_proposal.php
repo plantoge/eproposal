@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateTraceTrackProposal extends Migration
@@ -13,16 +14,19 @@ class CreateTraceTrackProposal extends Migration
      */
     public function up()
     {
-        Schema::create('trace_track_proposal', function (Blueprint $table) {
-            $table->char('TRACK_ID', 50)->primary();
-            $table->text('TRACK_PROPOSAL_ID', 50)->nullable();
-            $table->string('TRACK_TAHAPAN', 50)->nullable();
-            $table->string('TRACK_STATUS', 50)->nullable();
-            $table->text('TRACK_KETERANGAN', 50)->nullable();
-            $table->char('TRACK_USER_ID', 50);
-            
+        DB::statement('CREATE SCHEMA IF NOT EXISTS eproposal');
+        
+        Schema::create('eproposal.trace_track_proposal', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->timestamps();
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
+            $table->softDeletes();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->text('track_proposal_id', 50)->nullable();
+            $table->string('track_tahapan', 50)->nullable();
+            $table->string('track_status', 50)->nullable();
+            $table->text('track_keterangan', 50)->nullable();
+            $table->uuid('track_user_id', 50)->nullable();
         });
     }
 
@@ -33,6 +37,6 @@ class CreateTraceTrackProposal extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trace_track_proposal');
+        Schema::dropIfExists('eproposal.trace_track_proposal');
     }
 }

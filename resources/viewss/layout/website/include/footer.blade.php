@@ -1,5 +1,5 @@
 @php
-    $informasi = DB::table('informasi_kontak')->where('INFO_ID', '001')->first();
+    $informasi = DB::table('informasi_kontak')->where('id', '001')->first();
 @endphp
 
 <div class="bg-grey-100 bg-dark pt-10 pb-13 pt-lg-6 pb-lg-15">

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\module;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use App\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -33,73 +33,6 @@ class registerController extends Controller
             'QR_Image' => $QR_Image,
             'google2fa_secret' => $google2fa_secret
         ]);
-    }
-
-    public function verifikasipendaftaranwithout2fa(Request $request)
-    {
-        $rule = [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone' => ['required', 'string', 'max:20'],
-            'institusi_asal' => ['required', 'string'],
-            'jk' => ['required', 'string'],
-        ];
-
-        $pesan = [
-            'name.required' => 'Kolom nama harus diisi.',
-            'name.max' => 'Panjang nama maksimal :max karakter.',
-            'email.required' => 'Kolom email harus diisi.',
-            'email.email' => 'Format email tidak valid.',
-            'password.required' => 'Kolom password harus diisi.',
-            'password.min' => 'Panjang password minimal :min karakter.',
-            'password.confirmed' => 'Konfirmasi password tidak cocok.',
-            'phone.required' => 'Kolom WhatsApp harus diisi.',
-            'institusi_asal.required' => 'Kolom Institusi Asal harus diisi.',
-            'jk.required' => 'Kolom identitas harus diisi.',
-        ];
-
-        $validator = Validator::make($request->all(), $rule, $pesan);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status_code' => 422, //422 | server meresponse tapi validasi tidak lolos
-                'errors' => $validator->errors(),
-            ]);
-        }
-
-        $store = New User();
-        $store->id = Uuid::uuid4()->toString();
-        $store->status_user = 'visitor';
-        $store->name = $request['name'];
-        $store->username = $request['email'];
-        $store->password = bcrypt($request['password']);
-        $store->email = $request['email'];
-        $store->phone = $request['phone'];
-        $store->institusi_asal = $request['institusi_asal'];
-        $store->kategori_pendidikan = $request['kategori_pendidikan'];
-        $store->jk = $request['jk'];
-        $store->g2fa = null;
-        $store->g2fa_active = null;
-        $store->save();
-        // $store->refresh();
-
-        // masukkan ke assign role visitor
-        $role = 'visitor';
-        $user = \App\User::find($store->id);
-        $user->assignRole($role);
-
-        $responseData = [
-            'status_code' => 200,
-            'message' => 'Pendaftaran berhasil silahkan login',
-        ];
-        
-        return response()->json($responseData, 200);
-        
-        // Logic for successful validation
-        // session()->flash('keyword', 'TambahData');
-        // session()->flash('pesan', 'Berhasil Daftar akun');
-        // return redirect('/auth-sign-in');
     }
 
     public function verifikasipendaftaran(Request $request)
@@ -135,18 +68,31 @@ class registerController extends Controller
             ]);
         }
 
-        $google2fa = app('pragmarx.google2fa');
-        
-        $sesi = session([
-            'request_data'     => $request->all(),
-            'goggle2fa_secret' => $google2fa->generateSecretKey(),
-        ]);
+        DB::beginTransaction();
 
-        session()->flash('request_registrasi', $sesi);
+        $store = New User();
+        $store->id = Uuid::uuid4()->toString();
+        $store->status_user = 'visitor';
+        $store->name = $request['name'];
+        $store->username = $request['email'];
+        $store->password = bcrypt($request['password']);
+        $store->email = $request['email'];
+        $store->phone = $request['phone'];
+        $store->institusi_asal = $request['institusi_asal'];
+        $store->jk = $request['jk'];
+        $store->kategori_pendidikan = $request['kategori_pendidikan'];
+        $store->save();
+        
+        // masukkan ke assign role visitor
+        $role = 'visitor';
+        $user = User::find($store->id);
+        $user->assignRole($role);
+        
+        DB::commit();
 
         $responseData = [
             'status_code' => 200,
-            'message' => 'Selangkah lagi untuk Daftar akun',
+            'message' => 'Pendaftaran berhasil silahkan login',
         ];
         
         return response()->json($responseData, 200);
@@ -156,6 +102,61 @@ class registerController extends Controller
         // session()->flash('pesan', 'Berhasil Daftar akun');
         // return redirect('/auth-sign-in');
     }
+
+    // public function verifikasipendaftaran(Request $request)
+    // {
+    //     $rule = [
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
+    //         'phone' => ['required', 'string', 'max:20'],
+    //         'institusi_asal' => ['required', 'string'],
+    //         'jk' => ['required', 'string'],
+    //     ];
+
+    //     $pesan = [
+    //         'name.required' => 'Kolom nama harus diisi.',
+    //         'name.max' => 'Panjang nama maksimal :max karakter.',
+    //         'email.required' => 'Kolom email harus diisi.',
+    //         'email.email' => 'Format email tidak valid.',
+    //         'password.required' => 'Kolom password harus diisi.',
+    //         'password.min' => 'Panjang password minimal :min karakter.',
+    //         'password.confirmed' => 'Konfirmasi password tidak cocok.',
+    //         'phone.required' => 'Kolom WhatsApp harus diisi.',
+    //         'institusi_asal.required' => 'Kolom Institusi Asal harus diisi.',
+    //         'jk.required' => 'Kolom identitas harus diisi.',
+    //     ];
+
+    //     $validator = Validator::make($request->all(), $rule, $pesan);
+
+    //     if ($validator->fails()) {
+    //         return response()->json([
+    //             'status_code' => 422, //422 | server meresponse tapi validasi tidak lolos
+    //             'errors' => $validator->errors(),
+    //         ]);
+    //     }
+
+    //     $google2fa = app('pragmarx.google2fa');
+        
+    //     $sesi = session([
+    //         'request_data'     => $request->all(),
+    //         'goggle2fa_secret' => $google2fa->generateSecretKey(),
+    //     ]);
+
+    //     session()->flash('request_registrasi', $sesi);
+
+    //     $responseData = [
+    //         'status_code' => 200,
+    //         'message' => 'Selangkah lagi untuk Daftar akun',
+    //     ];
+        
+    //     return response()->json($responseData, 200);
+        
+    //     // Logic for successful validation
+    //     // session()->flash('keyword', 'TambahData');
+    //     // session()->flash('pesan', 'Berhasil Daftar akun');
+    //     // return redirect('/auth-sign-in');
+    // }
 
     public function setGoogle2fa(){
         $request = session('request_data');
@@ -279,7 +280,7 @@ class registerController extends Controller
             return redirect('/');
         }
 
-        $update = users::find(Auth::user()->id);
+        $update = User::find(Auth::user()->id);
         $update->g2fa = $request->otps;
         $update->save();
 

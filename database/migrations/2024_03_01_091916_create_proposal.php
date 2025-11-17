@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateProposal extends Migration
@@ -13,37 +14,43 @@ class CreateProposal extends Migration
      */
     public function up()
     {
-        Schema::create('proposal', function (Blueprint $table) {
-            $table->char('PROPOSAL_ID', 50)->primary();
-            $table->bigInteger('PROPOSAL_NOMOR')->nullable();
-            $table->string('PROPOSAL_KODE')->nullable();
-            $table->string('PROPOSAL_PENELITI_UTAMA')->nullable();
-            $table->text('PROPOSAL_TIM_PENELITI')->nullable();
-            $table->text('PROPOSAL_JUDUL_PENELITIAN')->nullable();
-            $table->string('PROPOSAL_SURAT_PENGANTAR')->nullable();
-            $table->string('PROPOSAL_PROPOSAL_PENELITIAN')->nullable();
-            $table->string('PROPOSAL_KAJI_ETIK')->nullable();
-            $table->string('PROPOSAL_KAJI_ETIK_RSPI')->nullable();
-            $table->string('PROPOSAL_SERTIFIKAT_GCP')->nullable();
-            // $table->string('PROPOSAL_LAPORAN_PENELITIAN')->nullable();
-            // $table->string('PROPOSAL_RAW_DATA_PENELITIAN')->nullable();
-            $table->string('PROPOSAL_INSTITUSI_ASAL')->nullable();
-            $table->string('PROPOSAL_EMAIL')->nullable();
-            $table->string('PROPOSAL_PHONE')->nullable();
-            $table->char('PROPOSAL_USER_ID', 50);
-            $table->string('PROPOSAL_TAHAPAN')->nullable();
-            $table->string('PROPOSAL_STATUS')->nullable();
-            $table->text('PROPOSAL_SURAT_TANGGAPAN')->nullable();
-            $table->text('PROPOSAL_SURAT_PENOLAKAN')->nullable();
-            $table->text('PROPOSAL_PKS')->nullable();
-            $table->text('PROPOSAL_MTA')->nullable();
-            $table->text('PROPOSAL_KERAHASIAAN')->nullable();
-            $table->text('PROPOSAL_BUKTI_BAYAR')->nullable();
-            $table->text('PROPOSAL_IZIN_PENELITIAN')->nullable();
-            $table->text('PROPOSAL_IZIN_PENELITIAN_DRAFT')->nullable();
-            
+        DB::statement('CREATE SCHEMA IF NOT EXISTS eproposal');
+        
+        Schema::create('eproposal.proposal', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->timestamps();
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
+            $table->softDeletes();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->bigInteger('proposal_nomor')->nullable();
+            $table->string('proposal_kode')->nullable();
+            $table->string('proposal_peneliti_utama')->nullable();
+            $table->text('proposal_tim_peneliti')->nullable();
+            $table->text('proposal_judul_penelitian')->nullable();
+            $table->string('proposal_surat_pengantar')->nullable();
+            $table->string('proposal_proposal_penelitian')->nullable();
+            $table->string('proposal_kaji_etik')->nullable();
+            $table->string('proposal_sertifikat_gcp')->nullable();
+            $table->string('proposal_kaji_etik_rspi')->nullable();
+            $table->text('proposal_pks')->nullable();
+            $table->text('proposal_mta')->nullable();
+            $table->text('proposal_kerahasiaan')->nullable();
+            $table->text('proposal_bukti_bayar')->nullable();
+            $table->text('proposal_laporan_penelitian')->nullable();
+            $table->text('proposal_raw_data_penelitian')->nullable();
+            $table->text('proposal_izin_penelitian_draft')->nullable();
+            $table->text('proposal_izin_penelitian')->nullable();
+            $table->string('proposal_institusi_asal')->nullable();
+            $table->text('proposal_surat_tanggapan')->nullable();
+            $table->text('proposal_surat_penolakan')->nullable();
+            $table->string('proposal_tahapan')->nullable();
+            $table->string('proposal_status')->nullable();
+            $table->string('proposal_email')->nullable();
+            $table->string('proposal_phone')->nullable();
+            $table->uuid('proposal_user_id')->nullable();
+            $table->timestamp('proposal_tanggal_presentasi')->nullable();
+            $table->text('proposal_kategori_presentasi')->nullable();
+            $table->text('proposal_media_presentasi')->nullable();
         });
     }
 
@@ -54,6 +61,6 @@ class CreateProposal extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proposal');
+        Schema::dropIfExists('eproposal.proposal');
     }
 }

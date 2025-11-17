@@ -30,36 +30,27 @@ class panelController extends Controller
     public function store_informasi(Request $request)
     {
         $update = infokontak_model::find('001');
-        $update->SAMBUTAN_BERANDA = $request->sambutan_beranda;
-        $update->DESKRIPSI_AGENDA = $request->deskripsi_agenda;
-        $update->DESKRIPSI_TENTANGKAMI = $request->deskripsi_tentangkami;
-        $update->DESKRIPSI_SINGKAT_POINTPLUS = $request->deskripsi_singkat_poinplus;
-        $update->DESKRIPSI_SINGKAT_EVENT_BERANDA = $request->deskripsi_singkat_event_beranda;
-        $update->DESKRIPSI_SINGKAT_EVENT = $request->deskripsi_singkat_event;
-        $update->DESKRIPSI_SINGKAT_TESTIMONY = $request->deskripsi_singkat_testimony;
-        $update->DESKRIPSI_SINGKAT_AGENDA = $request->deskripsi_singkat_agenda;
-        $update->DESKRIPSI_SINGKAT_BERITA = $request->deskripsi_singkat_berita;
-        $update->DESKRIPSI_BIAYA = $request->deskripsi_biaya;
-        $update->TELEPON = $request->telepon;
-        $update->FAX = $request->fax;
-        $update->CALLCENTER = $request->callcenter;
-        $update->HOTLINE = $request->hotline;
-        $update->EMAIL = $request->email;
-        $update->FACEBOOK = $request->facebook;
-        $update->INSTAGRAM = $request->instagram;
-        $update->TWITTER = $request->twitter;
-        $update->WHATSAPP = $request->whatsapp;
-        $update->CP_KAJI_ETIK = $request->cp_kaji_etik;
-        $update->WA_KAJI_ETIK = $request->wa_kaji_etik;
-        $update->CP_PKS = $request->cp_pks;
-        $update->WA_PKS = $request->wa_pks;
-        $update->CP_MTA = $request->cp_mta;
-        $update->WA_MTA = $request->wa_mta;
-        $update->CP_KERAHASIAAN = $request->cp_kerahasiaan;
-        $update->WA_KERAHASIAAN = $request->wa_kerahasiaan;
-        $update->PEMILIK_REKENING = $request->pemilik_rekening;
-        $update->NOMOR_REKENING = $request->nomor_rekening;
-        $update->NAMA_BANK = $request->nama_bank;
+        $update->deskripsi_biaya = $request->deskripsi_biaya;
+        $update->telepon = $request->telepon;
+        $update->fax = $request->fax;
+        $update->callcenter = $request->callcenter;
+        $update->hotline = $request->hotline;
+        $update->email = $request->email;
+        $update->facebook = $request->facebook;
+        $update->instagram = $request->instagram;
+        $update->twitter = $request->twitter;
+        $update->whatsapp = $request->whatsapp;
+        $update->cp_kaji_etik = $request->cp_kaji_etik;
+        $update->wa_kaji_etik = $request->wa_kaji_etik;
+        $update->cp_pks = $request->cp_pks;
+        $update->wa_pks = $request->wa_pks;
+        $update->cp_mta = $request->cp_mta;
+        $update->wa_mta = $request->wa_mta;
+        $update->cp_kerahasiaan = $request->cp_kerahasiaan;
+        $update->wa_kerahasiaan = $request->wa_kerahasiaan;
+        $update->pemilik_rekening = $request->pemilik_rekening;
+        $update->nomor_rekening = $request->nomor_rekening;
+        $update->nama_bank = $request->nama_bank;
         
         // cek apakah ada data yang diubah
         if($update->isDirty() == true){

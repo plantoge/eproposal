@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHistoryFile extends Migration
+class CreateLaporanPenelitianTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,16 +16,19 @@ class CreateHistoryFile extends Migration
     {
         DB::statement('CREATE SCHEMA IF NOT EXISTS eproposal');
         
-        Schema::create('eproposal.history_file', function (Blueprint $table) {
+        Schema::create('eproposal.laporan_penelitian', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->timestamps();
             $table->softDeletes();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->text('history_proposal_id', 50)->nullable();
-            $table->text('history_file', 50)->nullable();
-            $table->text('history_keterangan', 50)->nullable();
-            $table->uuid('history_user_id')->nullable();
+            $table->uuid('proposal_id', 50)->nullable();
+            $table->string('penelitian_laporan', 255)->nullable();
+            $table->string('penelitian_raw_data', 255)->nullable();
+            $table->string('penelitian_surat_izin', 255)->nullable();
+            $table->string('penelitian_user_id', 255)->nullable();
+            $table->string('penelitian_status', 255)->nullable();
+            
         });
     }
 
@@ -36,6 +39,6 @@ class CreateHistoryFile extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eproposal.history_file');
+        Schema::dropIfExists('eproposal.laporan_penelitian');
     }
 }

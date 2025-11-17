@@ -1,5 +1,5 @@
 @php
-    $informasi = DB::table('informasi_kontak')->where('INFO_ID', '001')->first();
+    $informasi = DB::table('informasi_kontak')->where('id', '5ddb7471-30df-4f44-a51b-cb3e1f6e0653')->first();
 @endphp
 
 <div class="bg-grey-100 bg-dark pt-10 pb-13 pt-lg-6 pb-lg-15">
@@ -37,12 +37,12 @@
                                 <a href="{{url('/')}}"
                                     class="d-flex align-items-center text-center text-gray-700 text-hover-primary py-2 py-lg-3">
                                     <i class="fa-solid fa-phone fa-fw fa-lg lozad w-20px me-3"></i>
-                                    {{ $informasi->TELEPON }}
+                                    {{ $informasi->telepon ?? '-' }}
                                 </a>
                                 <a href="{{url('/')}}"
                                     class="d-flex align-items-center text-center text-gray-700 text-hover-primary py-2 py-lg-3">
                                     <i class="fa-solid fa-envelope fa-fw fa-lg lozad w-20x me-3"></i>
-                                    {{ $informasi->EMAIL }}
+                                    {{ $informasi->email ?? '-' }}
                                 </a>
                             </div>
                         </div>

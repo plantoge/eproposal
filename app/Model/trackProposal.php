@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Str;
 
 class trackProposal extends Model
 {
@@ -12,14 +13,6 @@ class trackProposal extends Model
     protected $primaryKey = 'TRACK_ID';
 
     protected $table = "trace_track_proposal";
-    protected $fillable = [
-        'TRACK_ID',
-        'TRACK_PROPOSAL_ID',
-        'TRACK_TAHAPAN',
-        'TRACK_STATUS',
-        'TRACK_KETERANGAN',
-        'TRACK_USER_ID',
-    ];
 
     protected static function boot()
     {
@@ -27,7 +20,19 @@ class trackProposal extends Model
 
         // Membuat UUID secara otomatis sebelum menyimpan model
         static::creating(function ($model) {
-            $model->TRACK_ID = Uuid::uuid4()->toString();
+            if (! $model->getKey()) {
+                $model->{$model->getKeyName()} = Uuid::uuid7()->toString();
+            }
         });
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo('App\Models\User', 'created_by', 'id');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo('App\Models\User', 'updated_by', 'id');
     }
 }

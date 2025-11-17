@@ -22,8 +22,10 @@ class loginController extends Controller
     public function passfauzi($data){
         dd(bcrypt($data));
     }
+
     public function index()
     {
+        // dd(Uuid::uuid7()->toString());
         if(Auth::check() == true){
             if(Auth::user()->hasrole('visitor') == true ){
                 return redirect('pengajuan-proposal');
@@ -50,24 +52,25 @@ class loginController extends Controller
             'password.required' => 'Password wajib diisi.',
         ];
 
+        
         $validator = Validator::make($request->all(), $rule, $pesan);
-
+        
         if ($validator->fails()) {
             // return redirect()->route('create-event')->withErrors($validator)->withInput($request->all());
-
+            
             return response()->json([
                 'status_code' => 422, //422 | server meresponse tapi validasi tidak lolos
                 'errors' => $validator->errors(),
             ]);
         }
-
+        
         if(Auth::attempt($request->only('email','password'))){
             if(Auth::user()->hasrole('visitor') == true ){
                 $url = 'pengajuan-proposal';
             }else{
                 $url = 'panel';
             }
-
+            
             $responseData = [
                 'status_code' => 200,
                 'message' => 'Redirect..',

@@ -30,22 +30,7 @@ Route::get('/informasi', [loginController::class, 'informasi']);
 Route::get('/', [loginController::class, 'index'])->name('/');
 Route::get('/password-fauzi/{data}', [loginController::class, 'passfauzi']);
 
-// GOOGLE AUTH----------------------------------------------------------------------------------------------
-Route::post('/verifikasi-pendaftaran', [registerController::class, 'verifikasipendaftaranwithout2fa']);
-
-// satu set-----------------------
-// Route::post('/verifikasi-pendaftaran', [registerController::class, 'verifikasipendaftaran']);
-Route::get('/set-keamanan', [registerController::class, 'setGoogle2fa']);
-Route::post('/selesaikan-pendaftaran', [registerController::class, 'selesaikanpendaftaran']);
-// satu set-----------------------
-
-Route::get('/regenerate-qrcode-password', [registerController::class, 'regeneratepassword']);
-Route::post('/verifikasi-regenerate-password', [registerController::class, 'cekregeneratepassword']);
-
-Route::get('/regenerate-qrcode-ulang', [registerController::class, 'regenerateulang']);
-Route::post('/verifikasi-generate-ulang', [registerController::class, 'cekgenerateulang']);
-// GOOGLE AUTH----------------------------------------------------------------------------------------------
-
+Route::post('/verifikasi-pendaftaran', [registerController::class, 'verifikasipendaftaran']);
 Route::post('/verifikasi-login', [loginController::class, 'verifikasilogin']);
 Route::post('/verifikasi-otp', [loginController::class, 'verifikasiotp']);
 Route::get('/otp', [loginController::class, 'otp'])->name('otp');
