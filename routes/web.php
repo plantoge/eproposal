@@ -51,7 +51,7 @@ Route::post('/reset-password/store', [loginController::class, 'storeresetpasswor
 Route::get('/logout', 'AuthController@logout');
 
 // Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], function(){
-Route::group(['middleware' => ['g2fa', 'checkrole:superadmin|visitor|operator']], function(){
+Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], function(){
     Route::get('/panel', [panelController::class, 'index']);
     Route::patch('/panel-informasi/store', [panelController::class, 'store_informasi']);
     
@@ -131,7 +131,7 @@ Route::group(['middleware' => ['checkrole:superadmin']], function(){
     Route::delete('struktur-organisasi/{id}/delete', [strukturOrganisasiController::class, 'destroy']);
 });
 
-Route::group(['middleware' => ['auth', 'g2fa']], function(){
+Route::group(['middleware' => ['auth']], function(){
     // TIDAK BOLEH DI HAPUS ===============================================  Route::get('/dashboard', 'DashboardController@index');
     Route::get('/setelan', [SetelanController::class, 'index']);
     Route::patch('/update-biodata', [SetelanController::class, 'updatebiodata']);

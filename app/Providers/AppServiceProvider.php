@@ -29,7 +29,6 @@ class AppServiceProvider extends ServiceProvider
         // Script untuk Format Rupiah
         Blade::directive('matauang', function ( $expression ) { 
             return "<?php echo number_format($expression, 2, ',', '.'); ?>";
-            /** return "Rp. <?php echo number_format($expression,0,',','.'); ?>"; */
         });
     }
 }
