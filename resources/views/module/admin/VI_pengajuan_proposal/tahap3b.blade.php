@@ -26,7 +26,7 @@
     <div class="card card-xxl-stretch p-5">
         <div class="card-header">
             <div class="card-title align-items-start flex-column">
-                <span class="card-label fw-bolder text-dark mb-2">Pelaksanaan Penelitian (#{{$proposal->PROPOSAL_KODE}})</span>
+                <span class="card-label fw-bolder text-dark mb-2">Pelaksanaan Penelitian (#{{$proposal->proposal_kode}})</span>
 
                 <div class="alert alert-dismissible bg-light-success border border-success border-dashed d-flex flex-column flex-sm-row w-100 p-5 mb-5">
                     <i class="ki-duotone ki-message-text-2 fs-2hx text-success me-4 mb-5 mb-sm-0"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>                    <!--end::Icon-->
@@ -40,7 +40,7 @@
 
                 </div>
                 
-                <span class="proposaltahap3" hidden>{{$proposal->PROPOSAL_ID}}</span>
+                <span class="proposaltahap3" hidden>{{$proposal->proposal_id}}</span>
             </div>
 
         </div>
@@ -48,7 +48,7 @@
             
             <div class="row">
                 <div class="col col-lg-5 mb-6">
-                    <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN_DRAFT/'.$proposal->PROPOSAL_IZIN_PENELITIAN_DRAFT)}}" class="card hover-elevate-up shadow-sm parent-hover" target="_blank">
+                    <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN_DRAFT/'.$proposal->proposal_izin_penelitian_draft)}}" class="card hover-elevate-up shadow-sm parent-hover" target="_blank">
                         <div class="card-body d-flex align-items">
                             <span class="svg-icon fs-1">
                                 <i class="fa-regular fa-file-zipper fa-fw fa-2x"></i>
@@ -74,7 +74,7 @@
             </small> --}}
             <div class="row">
                 <div class="col-12">
-                    @if($proposal->PROPOSAL_IZIN_PENELITIAN_DRAFT == NULL)
+                    @if($proposal->proposal_izin_penelitian_draft == NULL)
                         <button class="btn btn-sm btn-success float-end">Selanjutnya</button>
                     @endif
                     <a href="{{url('/')}}" class="btn btn-sm btn-dark float-end me-2">Kembali</a>

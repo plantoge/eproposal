@@ -26,7 +26,7 @@
     <div class="card card-xxl-stretch p-5">
         <div class="card-header">
             <div class="card-title align-items-start flex-column">
-                <span class="card-label fw-bolder text-dark mb-2">Administrasi (#{{$proposal->PROPOSAL_KODE}})</span>
+                <span class="card-label fw-bolder text-dark mb-2">Administrasi (#{{$proposal->proposal_kode}})</span>
 
                 <div class="alert alert-dismissible bg-light-primary border border-primary border-dashed d-flex flex-column flex-sm-row w-100 p-5 mb-5">
                     <i class="ki-duotone ki-message-text-2 fs-2hx text-primary me-4 mb-5 mb-sm-0"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>                    <!--end::Icon-->
@@ -39,7 +39,7 @@
 
                 </div>
                 
-                <span class="proposaltahap3" hidden>{{$proposal->PROPOSAL_ID}}</span>
+                <span class="proposaltahap3" hidden>{{$proposal->proposal_id}}</span>
             </div>
 
         </div>
@@ -87,16 +87,16 @@
                             <small id="bukti_error" class="text-danger"></small>
                             <small class="text-dark">jpeg, jpg, pdf maks. 2MB</small>
                         </div>
-                        @if($proposal->PROPOSAL_BUKTI_BAYAR != NULL) 
+                        @if($proposal->proposal_bukti_bayar != NULL) 
                             <small>
-                                <a href="{{Storage::url('FILE_BUKTI_BAYAR/'.$proposal->PROPOSAL_BUKTI_BAYAR)}}" class="btn btn-link btn-sm">{{$proposal->PROPOSAL_BUKTI_BAYAR}}</a>
+                                <a href="{{Storage::url('FILE_BUKTI_BAYAR/'.$proposal->proposal_bukti_bayar)}}" class="btn btn-link btn-sm">{{$proposal->proposal_bukti_bayar}}</a>
                             </small>
                         @endif
                     </div>
                 </div>
             </div>
 
-            @if($proposal->PROPOSAL_IZIN_PENELITIAN_DRAFT != NULL)
+            @if($proposal->proposal_izin_penelitian_draft != NULL)
             <hr>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>Pemberitahuan!</strong> Pelaksanaan Penelitian .. dengan menghubungi : Nama PJ
@@ -116,7 +116,7 @@
             </small> --}}
             <div class="row">
                 <div class="col-12">
-                    @if($proposal->PROPOSAL_IZIN_PENELITIAN_DRAFT == NULL)
+                    @if($proposal->proposal_izin_penelitian_draft == NULL)
                         <button class="btn btn-sm btn-success float-end">Selanjutnya</button>
                     @endif
                     <a href="{{url('/')}}" class="btn btn-sm btn-dark float-end me-2">Kembali</a>

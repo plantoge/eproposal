@@ -75,26 +75,26 @@
                             <tr class="align-middle border-secondary border-bottom">
                                 <td>{{$loop->iteration}}</td>
                                 <td>
-                                    <a href="{{url('/antrian-proposal/'.$data->PROPOSAL_ID)}}" class="btn btn-sm btn-secondary w-100">Detail</a> <br>
-                                    <button class="w-100 btn btn-sm btn-danger text-white btn-delete-pengajuan disabled" hidden data-pengajuan="{{$data->PROPOSAL_ID}}">
+                                    <a href="{{url('/antrian-proposal/'.$data->id)}}" class="btn btn-sm btn-secondary w-100">Detail</a> <br>
+                                    <button class="w-100 btn btn-sm btn-danger text-white btn-delete-pengajuan disabled" hidden data-pengajuan="{{$data->id}}">
                                         Batalkan
                                     </button>
                                     <button 
                                         class="w-100 btn btn-sm btn-primary modalstatus" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#modalstatus" 
-                                        data-pengajuan="{{$data->PROPOSAL_ID}}"
-                                        data-status="{{$data->PROPOSAL_STATUS}}">
+                                        data-pengajuan="{{$data->id}}"
+                                        data-status="{{$data->proposal_status}}">
                                         Status
                                     </button>
                                     <br>
                                     
-                                    @if($data->PROPOSAL_STATUS == 'Penjadwalan Presentasi' )
+                                    @if($data->proposal_status == 'Penjadwalan Presentasi' )
                                     <button 
                                         class="w-100 btn btn-sm btn-warning text-dark modaltanggapan" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#modaltanggapan" 
-                                        data-pengajuan="{{$data->PROPOSAL_ID}}">
+                                        data-pengajuan="{{$data->id}}">
                                         Tanggapan
                                     </button>
                                     <br>
@@ -102,154 +102,154 @@
                                         class="w-100 btn btn-sm btn-info text-white modaljadwal" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#modaljadwal" 
-                                        data-tanggal_presentasi="{{$data->PROPOSAL_TANGGAL_PRESENTASI}}"
-                                        data-kategori_presentasi="{{$data->PROPOSAL_KATEGORI_PRESENTASI}}"
-                                        data-media_presentasi="{{$data->PROPOSAL_MEDIA_PRESENTASI}}"
-                                        data-pengajuan="{{$data->PROPOSAL_ID}}">
+                                        data-tanggal_presentasi="{{$data->proposal_tanggal_presentasi}}"
+                                        data-kategori_presentasi="{{$data->proposal_kategori_presentasi}}"
+                                        data-media_presentasi="{{$data->proposal_media_presentasi}}"
+                                        data-pengajuan="{{$data->id}}">
                                         Jadwal Presentasi
                                     </button>
                                     <br>
                                     @endif
-                                    @if($data->PROPOSAL_STATUS == 'Verifikasi dan Menunggu Draft Izin Penelitian' || $data->PROPOSAL_STATUS == 'Verifikasi Akhir' )
+                                    @if($data->proposal_status == 'Verifikasi dan Menunggu Draft Izin Penelitian' || $data->proposal_status == 'Verifikasi Akhir' )
                                     <button 
                                         class="w-100 btn btn-sm btn-success modalizin" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#modalizin" 
-                                        data-keyizin="{{$data->PROPOSAL_ID}}">
+                                        data-keyizin="{{$data->id}}">
                                         Izin Penelitian
                                     </button>
                                     @endif
-                                    @if($data->PROPOSAL_TAHAPAN == 1 || $data->PROPOSAL_TAHAPAN == 2 )
+                                    @if($data->proposal_tahapan == 1 || $data->proposal_tahapan == 2 )
                                     <button 
                                         class="w-100 btn btn-sm btn-danger modaltolak" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#modaltolak" 
-                                        data-pengajuan="{{$data->PROPOSAL_ID}}">
+                                        data-pengajuan="{{$data->id}}">
                                         Tolak
                                     </button>
                                     <br>
                                     @endif
                                 </td>
-                                <td>#{{$data->PROPOSAL_KODE}}</td>
-                                <td class="text-center">{{$data->PROPOSAL_TAHAPAN}}</td>
+                                <td>#{{$data->proposal_kode}}</td>
+                                <td class="text-center">{{$data->proposal_tahapan}}</td>
                                 <td>
-                                    @if($data->PROPOSAL_STATUS)
-                                        {{$data->PROPOSAL_STATUS}}
+                                    @if($data->proposal_status)
+                                        {{$data->proposal_status}}
                                     @else
                                         Belum Input
                                     @endif
                                 </td>
-                                <td>{{$data->PROPOSAL_PENELITI_UTAMA}}</td>
-                                <td>{{$data->PROPOSAL_EMAIL}}</td>
-                                <td>{{$data->PROPOSAL_PHONE}}</td>
-                                <td>{{$data->PROPOSAL_INSTITUSI_ASAL}}</td>
+                                <td>{{$data->proposal_peneliti_utama}}</td>
+                                <td>{{$data->proposal_email}}</td>
+                                <td>{{$data->proposal_phone}}</td>
+                                <td>{{$data->proposal_institusi_asal}}</td>
                                 <td>
                                     <span class="text-break">
-                                        {{$data->PROPOSAL_TIM_PENELITI}}
+                                        {{$data->proposal_tim_peneliti}}
                                     </span>
                                 </td>
-                                <td>{{$data->PROPOSAL_JUDUL_PENELITIAN}}</td>
+                                <td>{{$data->proposal_judul_penelitian}}</td>
                                 <td>
-                                    @if($data->PROPOSAL_SURAT_PENGANTAR)
-                                    <a href="{{Storage::url('FILE_SURAT_PENGANTAR/'.$data->PROPOSAL_SURAT_PENGANTAR)}}" target="_blank" class="btn btn-link btn-sm text-danger">surat pengantar</a>
+                                    @if($data->proposal_surat_pengantar)
+                                    <a href="{{Storage::url('FILE_SURAT_PENGANTAR/'.$data->proposal_surat_pengantar)}}" target="_blank" class="btn btn-link btn-sm text-danger">surat pengantar</a>
                                     @else
                                         <span class="btn btn-link btn-sm disabled">Kosong</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_PROPOSAL_PENELITIAN)
+                                    @if($data->proposal_proposal_penelitian)
                                     <button 
                                         class="w-100 btn btn-link btn-sm btn-history-file" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#modalproposal" 
-                                        data-pengajuan="{{$data->PROPOSAL_ID}}">
+                                        data-pengajuan="{{$data->id}}">
                                         Lihat
                                     </button>
-                                    {{-- <a href="{{Storage::url('FILE_PROPOSAL_PENELITIAN/'.$data->PROPOSAL_PROPOSAL_PENELITIAN)}}" target="_blank" class="btn btn-link btn-sm text-danger">proposal penelitian</a> --}}
+                                    {{-- <a href="{{Storage::url('FILE_PROPOSAL_PENELITIAN/'.$data->proposal_proposal_penelitian)}}" target="_blank" class="btn btn-link btn-sm text-danger">proposal penelitian</a> --}}
                                     @else
                                         <span class="btn btn-link btn-sm disabled">Kosong</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_KAJI_ETIK)
-                                    <a href="{{Storage::url('FILE_KAJI_ETIK/'.$data->PROPOSAL_KAJI_ETIK)}}" target="_blank" class="btn btn-link btn-sm text-danger">kaji etik</a>
+                                    @if($data->proposal_kaji_etik)
+                                    <a href="{{Storage::url('FILE_KAJI_ETIK/'.$data->proposal_kaji_etik)}}" target="_blank" class="btn btn-link btn-sm text-danger">kaji etik</a>
                                     @else
                                         <span class="btn btn-link btn-sm disabled">Kosong</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_KERAHASIAAN)
-                                    <a href="{{Storage::url('FILE_KERAHASIAAN/'.$data->PROPOSAL_KERAHASIAAN)}}" target="_blank" class="btn btn-link btn-sm">Lihat</a>
+                                    @if($data->proposal_kerahasiaan)
+                                    <a href="{{Storage::url('FILE_KERAHASIAAN/'.$data->proposal_kerahasiaan)}}" target="_blank" class="btn btn-link btn-sm">Lihat</a>
                                     @else
                                         <button class="btn btn-link btn-sm disabled">Kosong</button>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_SERTIFIKAT_GCP)
-                                    <a href="{{Storage::url('FILE_SERTIFIKAT_GCP/'.$data->PROPOSAL_SERTIFIKAT_GCP)}}" target="_blank" class="btn btn-link btn-sm text-danger">gcp</a>
+                                    @if($data->proposal_sertifikat_gcp)
+                                    <a href="{{Storage::url('FILE_SERTIFIKAT_GCP/'.$data->proposal_sertifikat_gcp)}}" target="_blank" class="btn btn-link btn-sm text-danger">gcp</a>
                                     @else
                                         <span class="btn btn-link btn-sm disabled">Kosong</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_KAJI_ETIK_RSPI)
-                                    <a href="{{Storage::url('FILE_KAJI_ETIK_RSPI/'.$data->PROPOSAL_KAJI_ETIK_RSPI)}}" target="_blank" class="btn btn-link btn-sm text-danger">kaji etik rspi</a>
+                                    @if($data->proposal_kaji_etik_rspi)
+                                    <a href="{{Storage::url('FILE_KAJI_ETIK_RSPI/'.$data->proposal_kaji_etik_rspi)}}" target="_blank" class="btn btn-link btn-sm text-danger">kaji etik rspi</a>
                                     @else
                                         <span class="btn btn-link btn-sm disabled">Kosong</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_PKS)
-                                    <a href="{{Storage::url('FILE_PKS/'.$data->PROPOSAL_PKS)}}" target="_blank" class="btn btn-link btn-sm text-danger">pks</a>
+                                    @if($data->proposal_pks)
+                                    <a href="{{Storage::url('FILE_PKS/'.$data->proposal_pks)}}" target="_blank" class="btn btn-link btn-sm text-danger">pks</a>
                                     @else
                                         <span class="btn btn-link btn-sm disabled">Kosong</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_MTA)
-                                    <a href="{{Storage::url('FILE_MTA/'.$data->PROPOSAL_MTA)}}" target="_blank" class="btn btn-link btn-sm text-danger">mta</a>
+                                    @if($data->proposal_mta)
+                                    <a href="{{Storage::url('FILE_MTA/'.$data->proposal_mta)}}" target="_blank" class="btn btn-link btn-sm text-danger">mta</a>
                                     @else
                                         <span class="btn btn-link btn-sm disabled">Kosong</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_SURAT_PENOLAKAN)
-                                    <a href="{{Storage::url('FILE_SURAT_PENOLAKAN/'.$data->PROPOSAL_SURAT_PENOLAKAN)}}" target="_blank" class="btn btn-link btn-sm text-danger">penolakan</a>
+                                    @if($data->proposal_surat_penolakan)
+                                    <a href="{{Storage::url('FILE_SURAT_PENOLAKAN/'.$data->proposal_surat_penolakan)}}" target="_blank" class="btn btn-link btn-sm text-danger">penolakan</a>
                                     @else
                                         <span class="btn btn-link btn-sm disabled">Kosong</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_BUKTI_BAYAR)
-                                    <a href="{{Storage::url('FILE_BUKTI_BAYAR/'.$data->PROPOSAL_BUKTI_BAYAR)}}" target="_blank" class="btn btn-link btn-sm text-danger">bukti bayar</a>
+                                    @if($data->proposal_bukti_bayar)
+                                    <a href="{{Storage::url('FILE_BUKTI_BAYAR/'.$data->proposal_bukti_bayar)}}" target="_blank" class="btn btn-link btn-sm text-danger">bukti bayar</a>
                                     @else
                                         <span class="btn btn-link btn-sm disabled">Kosong</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_IZIN_PENELITIAN_DRAFT)
-                                    <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN_DRAFT/'.$data->PROPOSAL_IZIN_PENELITIAN_DRAFT)}}" target="_blank" class="btn btn-link btn-sm text-danger">Draft Izin Penelitian</a>
+                                    @if($data->proposal_izin_penelitian_draft)
+                                    <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN_DRAFT/'.$data->proposal_izin_penelitian_draft)}}" target="_blank" class="btn btn-link btn-sm text-danger">Draft Izin Penelitian</a>
                                     @else
                                         <button class="btn btn-link btn-sm disabled">Kosong</button>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_LAPORAN_PENELITIAN)
-                                    <a href="{{Storage::url('FILE_LAPORAN_PENELITIAN/'.$data->PROPOSAL_LAPORAN_PENELITIAN)}}" target="_blank" class="btn btn-link btn-sm">Lihat</a>
+                                    @if($data->proposal_laporan_penelitian)
+                                    <a href="{{Storage::url('FILE_LAPORAN_PENELITIAN/'.$data->proposal_laporan_penelitian)}}" target="_blank" class="btn btn-link btn-sm">Lihat</a>
                                     @else
                                         <button class="btn btn-link btn-sm disabled">Kosong</button>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_RAW_DATA_PENELITIAN)
-                                    <a href="{{Storage::url('FILE_RAW_DATA_PENELITIAN/'.$data->PROPOSAL_RAW_DATA_PENELITIAN)}}" target="_blank" class="btn btn-link btn-sm">Lihat</a>
+                                    @if($data->proposal_raw_data_penelitian)
+                                    <a href="{{Storage::url('FILE_RAW_DATA_PENELITIAN/'.$data->proposal_raw_data_penelitian)}}" target="_blank" class="btn btn-link btn-sm">Lihat</a>
                                     @else
                                         <button class="btn btn-link btn-sm disabled">Kosong</button>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_IZIN_PENELITIAN)
-                                    <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN/'.$data->PROPOSAL_IZIN_PENELITIAN)}}" target="_blank" class="btn btn-link btn-sm text-danger">Izin Penelitian</a>
+                                    @if($data->proposal_izin_penelitian)
+                                    <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN/'.$data->proposal_izin_penelitian)}}" target="_blank" class="btn btn-link btn-sm text-danger">Izin Penelitian</a>
                                     @else
                                         <button class="btn btn-link btn-sm disabled">Kosong</button>
                                     @endif

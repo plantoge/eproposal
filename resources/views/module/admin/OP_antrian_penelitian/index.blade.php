@@ -61,58 +61,58 @@
                             <tr class="align-middle">
                                 <td>{{$loop->iteration}}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-danger text-white btn-delete-pengajuan disabled" hidden data-pengajuan="{{$data->PROPOSAL_ID}}">
+                                    <button class="btn btn-sm btn-danger text-white btn-delete-pengajuan disabled" hidden data-pengajuan="{{$data->proposal_id}}">
                                         Batalkan
                                     </button>
                                     <button 
                                     class="btn btn-sm btn-primary modalupload" 
                                     data-bs-toggle="modal" 
                                     data-bs-target="#modalupload"
-                                    data-proposal="{{$data->PROPOSAL_ID}}"
-                                    data-kode="{{$data->PROPOSAL_KODE}}">
+                                    data-proposal="{{$data->proposal_id}}"
+                                    data-kode="{{$data->proposal_kode}}">
                                     Upload
                                 </button>
                                 </td>
-                                <td>#{{$data->PROPOSAL_KODE}}</td>
+                                <td>#{{$data->proposal_kode}}</td>
                                 <td>
                                     {{\Carbon\Carbon::parse($data->created_at)->format('d-m-Y H:i:s')}}
                                 </td>
                                 <td>
-                                    @if ($data->PENELITIAN_LAPORAN)
-                                        <a href="{{Storage::url('FILE_LAPORAN_PENELITIAN/'.$data->PENELITIAN_LAPORAN)}}" class="btn btn-link btn-sm" target="new">Lihat</a>
+                                    @if ($data->penelitian_laporan)
+                                        <a href="{{Storage::url('FILE_LAPORAN_PENELITIAN/'.$data->penelitian_laporan)}}" class="btn btn-link btn-sm" target="new">Lihat</a>
                                     @else
                                         <button class="btn btn-link btn-sm">Kosong</button>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($data->PENELITIAN_RAW_DATA)
-                                        <a href="{{Storage::url('FILE_RAW_DATA_PENELITIAN/'.$data->PENELITIAN_RAW_DATA)}}" class="btn btn-link btn-sm" target="new">Lihat</a>
+                                    @if ($data->penelitian_raw_data)
+                                        <a href="{{Storage::url('FILE_RAW_DATA_PENELITIAN/'.$data->penelitian_raw_data)}}" class="btn btn-link btn-sm" target="new">Lihat</a>
                                     @else
                                         <button class="btn btn-link btn-sm">Kosong</button>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($data->PENELITIAN_SURAT_IZIN)
-                                        <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN/'.$data->PENELITIAN_SURAT_IZIN)}}" class="btn btn-link btn-sm" target="new">Lihat</a>
+                                    @if ($data->penelitian_surat_izin)
+                                        <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN/'.$data->penelitian_surat_izin)}}" class="btn btn-link btn-sm" target="new">Lihat</a>
                                     @else
                                         <button class="btn btn-link btn-sm">Kosong</button>
                                     @endif
                                 </td>
-                                <td>{{$data->PROPOSAL_PENELITI_UTAMA}}</td>
-                                <td>{{$data->PROPOSAL_TIM_PENELITI}}</td>
-                                <td>{{$data->PROPOSAL_PHONE}}</td>
-                                <td>{{$data->PROPOSAL_INSTITUSI_ASAL}}</td>
-                                <td>{{$data->PROPOSAL_JUDUL_PENELITIAN}}</td>
+                                <td>{{$data->proposal_peneliti_utama}}</td>
+                                <td>{{$data->proposal_tim_peneliti}}</td>
+                                <td>{{$data->proposal_phone}}</td>
+                                <td>{{$data->proposal_institusi_asal}}</td>
+                                <td>{{$data->proposal_judul_penelitian}}</td>
                                 {{-- <td>
-                                    @if($data->PROPOSAL_LAPORAN_PENELITIAN)
-                                    <a href="{{Storage::url('FILE_LAPORAN_PENELITIAN/'.$data->PROPOSAL_LAPORAN_PENELITIAN)}}" target="_blank" class="btn btn-link btn-sm">Lihat</a>
+                                    @if($data->proposal_laporan_penelitian)
+                                    <a href="{{Storage::url('FILE_LAPORAN_PENELITIAN/'.$data->proposal_laporan_penelitian)}}" target="_blank" class="btn btn-link btn-sm">Lihat</a>
                                     @else
                                         <button class="btn btn-link btn-sm">Kosong</button>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($data->PROPOSAL_RAW_DATA_PENELITIAN)
-                                    <a href="{{Storage::url('FILE_RAW_DATA_PENELITIAN/'.$data->PROPOSAL_RAW_DATA_PENELITIAN)}}" target="_blank" class="btn btn-link btn-sm">Lihat</a>
+                                    @if($data->proposal_raw_data_penelitian)
+                                    <a href="{{Storage::url('FILE_RAW_DATA_PENELITIAN/'.$data->proposal_raw_data_penelitian)}}" target="_blank" class="btn btn-link btn-sm">Lihat</a>
                                     @else
                                         <button class="btn btn-link btn-sm">Kosong</button>
                                     @endif

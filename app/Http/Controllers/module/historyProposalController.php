@@ -11,8 +11,7 @@ class historyProposalController extends Controller
 {
     public function index()
     {
-        $data = DB::Table('proposal')
-            ->whereIn('proposal.PROPOSAL_STATUS', ['Penelitian Selesai', 'Ditolak'])
+        $data = proposal::whereIn('proposal.proposal_status', ['Penelitian Selesai', 'Ditolak'])
             ->get();
         
         return view('module/admin/OP_history_proposal/index', [
@@ -21,17 +20,17 @@ class historyProposalController extends Controller
     }
 
     public function return($proposal_id){
-        $update = proposal::where('PROPOSAL_ID', $proposal_id)->first();
+        $update = proposal::where('id', $proposal_id)->first();
 
         $existsdata = $update !== null;
 
         if($existsdata == true){
-            if($update->PROPOSAL_STATUS == 'Ditolak'){
-                $update->PROPOSAL_TAHAPAN = '1';
-                $update->PROPOSAL_STATUS = '-';
-            }elseif($update->PROPOSAL_STATUS == 'Penelitian Selesai'){
-                $update->PROPOSAL_TAHAPAN = '5';
-                $update->PROPOSAL_STATUS = 'Dokumen Akhir';
+            if($update->proposal_status == 'Ditolak'){
+                $update->proposal_tahapan = '1';
+                $update->proposal_status = '-';
+            }elseif($update->proposal_status == 'Penelitian Selesai'){
+                $update->proposal_tahapan = '5';
+                $update->proposal_status = 'Dokumen Akhir';
             }
             $update->save();
 

@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class riwayatPengajuanController extends Controller
 {
     public function index(){
-        $data = proposal::where('proposal.PROPOSAL_USER_ID', Auth::user()->id)
-            ->whereIn('PROPOSAL_STATUS', ['Penelitian Selesai','Ditolak'])
+        $data = proposal::where('proposal.proposal_user_id', Auth::user()->id)
+            ->whereIn('proposal_status', ['Penelitian Selesai','Ditolak'])
             ->paginate(5);
         $totaldata = $data->total();
 

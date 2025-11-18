@@ -12,7 +12,7 @@ class historyFile extends Model
     protected $keyType = 'string';
     // protected $primaryKey = 'HISTORY_ID';
 
-    protected $table = "history_file";
+    protected $table = "eproposal.history_file";
 
     protected static function boot()
     {

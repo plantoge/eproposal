@@ -13,6 +13,7 @@ use App\Model\proposal;
 use App\Rules\CekFileJahatRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -107,6 +108,8 @@ class pengajuanProposalController extends Controller
             ]);
         }
 
+        DB::beginTransaction();
+
         // lolos validasi
         $generate = $this->generadeCode();
         $store = new proposal();
@@ -135,6 +138,8 @@ class pengajuanProposalController extends Controller
         $history->history_user_id = Auth::user()->id;
         $history->Save();
 
+        DB::commit();
+        
         $responseData = [
             'status_code' => 200,
             'message' => 'Data sudah di ajukan',
@@ -430,7 +435,7 @@ class pengajuanProposalController extends Controller
 
     public function destroy(Request $request)
     {
-        $data       = proposal::where('PROPOSAL_ID', $request->pengajuan)->first();
+        $data       = proposal::where('id', $request->pengajuan)->first();
         $existsdata1 = $data !== null;
 
         if($existsdata1 == true){

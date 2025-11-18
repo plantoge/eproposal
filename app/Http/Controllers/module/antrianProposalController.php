@@ -18,7 +18,7 @@ class antrianProposalController extends Controller
      */
     public function index()
     {
-        $data = proposal::whereNotIn('PROPOSAL_STATUS', ['Penelitian Selesai', 'Ditolak'])
+        $data = proposal::whereNotIn('proposal_status', ['Penelitian Selesai', 'Ditolak'])
                     ->orderBy('created_at','desc')
                     ->get(); 
 
@@ -30,22 +30,22 @@ class antrianProposalController extends Controller
     // control update status peneliti
     public function update(Request $request, $id)
     {
-        $update = proposal::where('PROPOSAL_ID', $id)->first();
+        $update = proposal::where('id', $id)->first();
         $existsdata = $update !== null;
 
         if($existsdata == true){
             if($request->status == 'Verifikasi'){
-                $update->PROPOSAL_TAHAPAN = '1';
+                $update->proposal_tahapan = '1';
             }else if($request->status == 'Kelengkapan Dokumen'){
-                $update->PROPOSAL_TAHAPAN = '2';
+                $update->proposal_tahapan = '2';
             }else if($request->status == 'Administrasi'){
-                $update->PROPOSAL_TAHAPAN = '3';      
+                $update->proposal_tahapan = '3';      
             }else if($request->status == 'Pelaksanaan Penelitian'){
-                $update->PROPOSAL_TAHAPAN = '4';      
+                $update->proposal_tahapan = '4';      
             }else if($request->status == 'Dokumen Akhir'){
-                $update->PROPOSAL_TAHAPAN = '5';
+                $update->proposal_tahapan = '5';
             }
-            $update->PROPOSAL_STATUS = $request->status;
+            $update->proposal_status = $request->status;
             $update->save();
 
             session()->flash('keyword', 'TambahData');
@@ -82,13 +82,13 @@ class antrianProposalController extends Controller
             ]);
         }
 
-        $update = proposal::where('PROPOSAL_ID', $request->pengajuann)->first();
+        $update = proposal::where('id', $request->pengajuann)->first();
         $existsdata = $update !== null;
 
         if($existsdata == true){
-            if($update->PROPOSAL_SURAT_PENOLAKAN != null){ Filestorage::delete('FILE_SURAT_PENOLAKAN', $update->PROPOSAL_SURAT_PENOLAKAN); }
-            $update->PROPOSAL_SURAT_PENOLAKAN     = Filestorage::upload('FILE_SURAT_PENOLAKAN', $request->file('suratpenolakan'));
-            $update->PROPOSAL_STATUS = 'Ditolak';
+            if($update->proposal_surat_penolakan != null){ Filestorage::delete('FILE_SURAT_PENOLAKAN', $update->proposal_surat_penolakan); }
+            $update->proposal_surat_penolakan     = Filestorage::upload('FILE_SURAT_PENOLAKAN', $request->file('suratpenolakan'));
+            $update->proposal_status = 'Ditolak';
             $update->save();
 
             $responseData = [
@@ -133,13 +133,13 @@ class antrianProposalController extends Controller
             ]);
         }
 
-        $update = proposal::where('PROPOSAL_ID', $request->pengajuann)->first();
+        $update = proposal::where('id', $request->pengajuann)->first();
         $existsdata = $update !== null;
 
         if($existsdata == true){
-            if($update->PROPOSAL_SURAT_TANGGAPAN != null){ Filestorage::delete('FILE_SURAT_TANGGAPAN', $update->PROPOSAL_SURAT_TANGGAPAN); }
-            $update->PROPOSAL_SURAT_TANGGAPAN     = Filestorage::upload('FILE_SURAT_TANGGAPAN', $request->file('surattanggapan'));
-            $update->PROPOSAL_STATUS = 'Revisi Proposal';
+            if($update->proposal_surat_tanggapan != null){ Filestorage::delete('FILE_SURAT_TANGGAPAN', $update->proposal_surat_tanggapan); }
+            $update->proposal_surat_tanggapan     = Filestorage::upload('FILE_SURAT_TANGGAPAN', $request->file('surattanggapan'));
+            $update->proposal_status = 'Revisi Proposal';
             $update->save();
 
             $responseData = [
@@ -165,12 +165,12 @@ class antrianProposalController extends Controller
         $existsdata = $update !== null;
 
         if($existsdata == true){
-            if($update->PROPOSAL_SURAT_PENOLAKAN != null){
+            if($update->proposal_surat_penolakan != null){
 
-                Storage::disk('local')->delete('/FILE_SURAT_PENOLAKAN/' . $update->PROPOSAL_SURAT_PENOLAKAN);
+                Storage::disk('local')->delete('/FILE_SURAT_PENOLAKAN/' . $update->proposal_surat_penolakan);
 
-                // $update->PROPOSAL_STATUS = 'Penolakan Dibatalkan';
-                $update->PROPOSAL_SURAT_PENOLAKAN = null;
+                // $update->proposal_status = 'Penolakan Dibatalkan';
+                $update->proposal_surat_penolakan = null;
                 $update->save();
 
                 session()->flash('keyword', 'TambahData');
@@ -214,24 +214,24 @@ class antrianProposalController extends Controller
             ]);
         }
 
-        $update = proposal::where('PROPOSAL_ID', $request->keyizin)->first();
+        $update = proposal::where('id', $request->keyizin)->first();
         // return response($update);
         $existsdata = $update !== null;
         
         if($existsdata == true){
 
-            if($update->PROPOSAL_STATUS == 'Verifikasi dan Menunggu Draft Izin Penelitian'){
+            if($update->proposal_status == 'Verifikasi dan Menunggu Draft Izin Penelitian'){
                 
-                if($update->PROPOSAL_IZIN_PENELITIAN_DRAFT != null){ Filestorage::delete('FILE_SURAT_IZIN_PENELITIAN_DRAFT', $update->PROPOSAL_IZIN_PENELITIAN_DRAFT); }
-                $update->PROPOSAL_IZIN_PENELITIAN_DRAFT     = Filestorage::upload('FILE_SURAT_IZIN_PENELITIAN_DRAFT', $request->file('suratizin'));
-                $update->PROPOSAL_TAHAPAN                   = '4';
-                $update->PROPOSAL_STATUS                    = 'Pelaksanaan Penelitian';
+                if($update->proposal_izin_penelitian_draft != null){ Filestorage::delete('FILE_SURAT_IZIN_PENELITIAN_DRAFT', $update->proposal_izin_penelitian_draft); }
+                $update->proposal_izin_penelitian_draft     = Filestorage::upload('FILE_SURAT_IZIN_PENELITIAN_DRAFT', $request->file('suratizin'));
+                $update->proposal_tahapan                   = '4';
+                $update->proposal_status                    = 'Pelaksanaan Penelitian';
 
-            }else if($update->PROPOSAL_STATUS == 'Verifikasi Akhir'){
+            }else if($update->proposal_status == 'Verifikasi Akhir'){
 
-                if($update->PROPOSAL_IZIN_PENELITIAN != null){ Filestorage::delete('FILE_SURAT_IZIN_PENELITIAN', $update->PROPOSAL_IZIN_PENELITIAN); }
-                $update->PROPOSAL_IZIN_PENELITIAN     = Filestorage::upload('FILE_SURAT_IZIN_PENELITIAN', $request->file('suratizin'));
-                $update->PROPOSAL_STATUS              = 'Penelitian Selesai';
+                if($update->proposal_izin_penelitian != null){ Filestorage::delete('FILE_SURAT_IZIN_PENELITIAN', $update->proposal_izin_penelitian); }
+                $update->proposal_izin_penelitian     = Filestorage::upload('FILE_SURAT_IZIN_PENELITIAN', $request->file('suratizin'));
+                $update->proposal_status              = 'Penelitian Selesai';
             }
 
             $update->save();
@@ -260,18 +260,18 @@ class antrianProposalController extends Controller
         $existsdata = $update !== null;
 
         if($existsdata == true){
-            if($update->PROPOSAL_IZIN_PENELITIAN_DRAFT != null || $update->PROPOSAL_IZIN_PENELITIAN != null){
+            if($update->proposal_izin_penelitian_draft != null || $update->proposal_izin_penelitian != null){
 
-                if($update->PROPOSAL_STATUS == 'Pelaksanaan Penelitian'){
-                    Filestorage::delete('FILE_SURAT_IZIN_PENELITIAN_DRAFT', $update->PROPOSAL_IZIN_PENELITIAN_DRAFT);
-                    // $update->PROPOSAL_STATUS = 'Draft Izin Penelitian Dibatalkan';
-                    $update->PROPOSAL_IZIN_PENELITIAN_DRAFT = null;
+                if($update->proposal_status == 'Pelaksanaan Penelitian'){
+                    Filestorage::delete('FILE_SURAT_IZIN_PENELITIAN_DRAFT', $update->proposal_izin_penelitian_draft);
+                    // $update->proposal_status = 'Draft Izin Penelitian Dibatalkan';
+                    $update->proposal_izin_penelitian_draft = null;
                     
-                }else if($update->PROPOSAL_STATUS == 'Dokumen Akhir'){
+                }else if($update->proposal_status == 'Dokumen Akhir'){
                     
-                    Filestorage::delete('FILE_SURAT_IZIN_PENELITIAN', $update->PROPOSAL_IZIN_PENELITIAN);
-                    // $update->PROPOSAL_STATUS = 'Izin Penelitian resmi Dibatalkan';
-                    $update->PROPOSAL_IZIN_PENELITIAN = null;
+                    Filestorage::delete('FILE_SURAT_IZIN_PENELITIAN', $update->proposal_izin_penelitian);
+                    // $update->proposal_status = 'Izin Penelitian resmi Dibatalkan';
+                    $update->proposal_izin_penelitian = null;
                 }
                 $update->save();
 
@@ -319,15 +319,15 @@ class antrianProposalController extends Controller
             ]);
         }
 
-        $update = proposal::where('PROPOSAL_ID', $request->pengajuan_jadwal)->first();
+        $update = proposal::where('id', $request->pengajuan_jadwal)->first();
         // return response($update);
         $existsdata = $update !== null;
         
         if($existsdata == true){
 
-            $update->PROPOSAL_TANGGAL_PRESENTASI  = $request->tanggal_presentasi;
-            $update->PROPOSAL_KATEGORI_PRESENTASI = $request->kategori_acara;
-            $update->PROPOSAL_MEDIA_PRESENTASI    = $request->media_presentasi;
+            $update->proposal_tanggal_presentasi  = $request->tanggal_presentasi;
+            $update->proposal_kategori_presentasi = $request->kategori_acara;
+            $update->proposal_media_presentasi    = $request->media_presentasi;
             $update->save();
             
             $responseData = [

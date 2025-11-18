@@ -24,31 +24,31 @@
                         <div class="col-sm-12 col-lg-6">
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Email</label>
-                                <input type="text" id="email" name="email" value="{{ $informasi->EMAIL }}"
+                                <input type="text" id="email" name="email" value="{{ $informasi->email }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Facebook</label>
-                                <input type="text" id="facebook" name="facebook" value="{{ $informasi->FACEBOOK }}"
+                                <input type="text" id="facebook" name="facebook" value="{{ $informasi->facebook }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="facebookError" class="text-danger"></small>
                             </div>
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Instagram</label>
-                                <input type="text" id="instagram" name="instagram" value="{{ $informasi->INSTAGRAM }}"
+                                <input type="text" id="instagram" name="instagram" value="{{ $informasi->instagram }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="instagramError" class="text-danger"></small>
                             </div>
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Twitter</label>
-                                <input type="text" id="twitter" name="twitter" value="{{ $informasi->TWITTER }}"
+                                <input type="text" id="twitter" name="twitter" value="{{ $informasi->twitter }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="twitterError" class="text-danger"></small>
                             </div>
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">WhatsApp</label>
-                                <input type="text" id="whatsapp" name="whatsapp" value="{{ $informasi->WHATSAPP }}"
+                                <input type="text" id="whatsapp" name="whatsapp" value="{{ $informasi->whatsapp }}"
                                     class="form-control mb-2" placeholder="ex: 0812345678">
                                 <small id="whatsappError" class="text-danger"></small>
                             </div>
@@ -57,25 +57,25 @@
                         <div class="col-sm-12 col-lg-6">
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Telepon</label>
-                                <input type="text" id="telepon" name="telepon" value="{{ $informasi->TELEPON }}"
+                                <input type="text" id="telepon" name="telepon" value="{{ $informasi->telepon }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="teleponError" class="text-danger"></small>
                             </div>
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Fax</label>
-                                <input type="text" id="fax" name="fax" value="{{ $informasi->FAX }}"
+                                <input type="text" id="fax" name="fax" value="{{ $informasi->fax }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="faxError" class="text-danger"></small>
                             </div>
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Call Center</label>
-                                <input type="text" id="callcenter" name="callcenter" value="{{ $informasi->CALLCENTER }}"
+                                <input type="text" id="callcenter" name="callcenter" value="{{ $informasi->callcenter }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="callcenterError" class="text-danger"></small>
                             </div>
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Hotline</label>
-                                <input type="text" id="hotline" name="hotline" value="{{ $informasi->HOTLINE }}"
+                                <input type="text" id="hotline" name="hotline" value="{{ $informasi->hotline }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="hotlineError" class="text-danger"></small>
                             </div>
@@ -89,7 +89,7 @@
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Contact person kaji etik</label>
                                 <input type="text" id="cp_kaji_etik" name="cp_kaji_etik"
-                                    value="{{ $informasi->CP_KAJI_ETIK }}" class="form-control mb-2" placeholder="">
+                                    value="{{ $informasi->cp_kaji_etik }}" class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Whatsapp kaji etik</label>
                                 <input type="text" id="wa_kaji_etik" name="wa_kaji_etik"
-                                    value="{{ $informasi->WA_KAJI_ETIK }}" class="form-control mb-2" placeholder="">
+                                    value="{{ $informasi->wa_kaji_etik }}" class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                         <div class="col-sm-12 col-lg-6">
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Contact person PKS</label>
-                                <input type="text" id="cp_pks" name="cp_pks" value="{{ $informasi->CP_PKS }}"
+                                <input type="text" id="cp_pks" name="cp_pks" value="{{ $informasi->cp_pks }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
@@ -114,7 +114,7 @@
                         <div class="col-sm-12 col-lg-6">
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Whatsapp PKS</label>
-                                <input type="text" id="wa_pks" name="wa_pks" value="{{ $informasi->WA_PKS }}"
+                                <input type="text" id="wa_pks" name="wa_pks" value="{{ $informasi->wa_pks }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
@@ -124,7 +124,7 @@
                         <div class="col-sm-12 col-lg-6">
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Contact person MTA</label>
-                                <input type="text" id="cp_mta" name="cp_mta" value="{{ $informasi->CP_MTA }}"
+                                <input type="text" id="cp_mta" name="cp_mta" value="{{ $informasi->cp_mta }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
@@ -132,7 +132,7 @@
                         <div class="col-sm-12 col-lg-6">
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Whatsapp MTA</label>
-                                <input type="text" id="wa_mta" name="wa_mta" value="{{ $informasi->WA_MTA }}"
+                                <input type="text" id="wa_mta" name="wa_mta" value="{{ $informasi->wa_mta }}"
                                     class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
@@ -143,7 +143,7 @@
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Contact person Pernyataan Kerahasiaan Data</label>
                                 <input type="text" id="cp_kerahasiaan" name="cp_kerahasiaan"
-                                    value="{{ $informasi->CP_KERAHASIAAN }}" class="form-control mb-2" placeholder="">
+                                    value="{{ $informasi->cp_kerahasiaan }}" class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Whatsapp Pernyataan Kerahasiaan Data</label>
                                 <input type="text" id="wa_kerahasiaan" name="wa_kerahasiaan"
-                                    value="{{ $informasi->WA_KERAHASIAAN }}" class="form-control mb-2" placeholder="">
+                                    value="{{ $informasi->wa_kerahasiaan }}" class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Pemilik Rekening</label>
                                 <input type="text" id="pemilik_rekening" name="pemilik_rekening"
-                                    value="{{ $informasi->PEMILIK_REKENING }}" class="form-control mb-2" placeholder="">
+                                    value="{{ $informasi->pemilik_rekening }}" class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Nomor Rekening</label>
                                 <input type="text" id="nomor_rekening" name="nomor_rekening"
-                                    value="{{ $informasi->NOMOR_REKENING }}" class="form-control mb-2" placeholder="">
+                                    value="{{ $informasi->nomor_rekening }}" class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
                         </div>
@@ -182,14 +182,14 @@
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Nama Bank</label>
                                 <input type="text" id="nama_bank" name="nama_bank"
-                                    value="{{ $informasi->NAMA_BANK }}" class="form-control mb-2" placeholder="">
+                                    value="{{ $informasi->nama_bank }}" class="form-control mb-2" placeholder="">
                                 <small id="emailError" class="text-danger"></small>
                             </div>
                         </div>
                         {{-- <div class="col-sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Logo Bank</label>
-                        <input type="text" id="logo_bank" name="logo_bank" value="{{$informasi->NOMOR_REKENING}}" class="form-control mb-2" placeholder="">
+                        <input type="text" id="logo_bank" name="logo_bank" value="{{$informasi->nomor_rekening}}" class="form-control mb-2" placeholder="">
                         <small id="emailError" class="text-danger"></small>
                     </div>
                 </div> --}}
@@ -201,7 +201,7 @@
                             <div class="mb-5 fv-row fv-plugins-icon-container">
                                 {{-- <label class="form-label">Deskripsi</label> --}}
                                 <textarea id="deskripsi_biaya" name="deskripsi_biaya" class="tox-target">
-                            {!! $informasi->DESKRIPSI_BIAYA !!}
+                            {!! $informasi->deskripsi_biaya !!}
                         </textarea>
                                 <small id="deskripsi_biaya_error" class="text-danger"></small>
                             </div>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
+use App\Role;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class givepermissionController extends Controller
 {

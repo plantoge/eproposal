@@ -1,13 +1,13 @@
 @php 
-    $a = $proposal->PROPOSAL_TAHAPAN;
-    $b = $proposal->PROPOSAL_STATUS;
+    $a = $proposal->proposal_tahapan;
+    $b = $proposal->proposal_status;
 @endphp 
 <form id="formsaya" method="post" enctype="multipart/form-data">
     @csrf
     <div class="card card-xxl-stretch p-5">
         <div class="card-header">
             <div class="card-title align-items-start flex-column">
-                <span class="card-label fw-bolder text-dark mb-2">Revisi Proposal Penelitian (#{{$proposal->PROPOSAL_KODE}})</span>
+                <span class="card-label fw-bolder text-dark mb-2">Revisi Proposal Penelitian (#{{$proposal->proposal_kode}})</span>
 
                 <div class="alert alert-dismissible bg-light-danger border border-danger border-dashed d-flex flex-column flex-sm-row w-100 p-5 mb-5">
                     <i class="ki-duotone ki-message-text-2 fs-2hx text-danger me-4 mb-5 mb-sm-0"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>                    <!--end::Icon-->
@@ -20,7 +20,7 @@
 
                 </div>
                 
-                <span class="proposal" hidden>{{$proposal->PROPOSAL_ID}}</span>
+                <span class="proposal" hidden>{{$proposal->proposal_id}}</span>
             </div>
         </div>
         <div class="card-body">
@@ -28,7 +28,7 @@
                 <div class="col-sm-12 col-lg-7">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label required">Nama Peneliti utama</label>
-                        <input type="text" id="peneliti_utama" name="peneliti_utama" value="{{$proposal->PROPOSAL_PENELITI_UTAMA}}" class="form-control mb-2" @if($b == 'Revisi Proposal')  @endif disabled>
+                        <input type="text" id="peneliti_utama" name="peneliti_utama" value="{{$proposal->proposal_peneliti_utama}}" class="form-control mb-2" @if($b == 'Revisi Proposal')  @endif disabled>
                         <small id="peneliti_utamaError" class="text-danger"></small>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label required">Anggota tim peneliti</label>
-                        <textarea id="tim_peneliti" name="tim_peneliti" rows="4" class="form-control" @if($b == 'Revisi Proposal')  @endif disabled>{{$proposal->PROPOSAL_TIM_PENELITI}}</textarea>
+                        <textarea id="tim_peneliti" name="tim_peneliti" rows="4" class="form-control" @if($b == 'Revisi Proposal')  @endif disabled>{{$proposal->proposal_tim_peneliti}}</textarea>
                         <small id="tim_penelitiError" class="text-danger"></small>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                 <div class="col-sm-12 col-lg-8">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label required">Judul Penelitian</label>
-                        <textarea id="judul_penelitian" name="judul_penelitian" rows="4" class="form-control" @if($b == 'Revisi Proposal')  @endif disabled>{{$proposal->PROPOSAL_JUDUL_PENELITIAN}}</textarea>
+                        <textarea id="judul_penelitian" name="judul_penelitian" rows="4" class="form-control" @if($b == 'Revisi Proposal')  @endif disabled>{{$proposal->proposal_judul_penelitian}}</textarea>
                         <small id="judul_penelitianError" class="text-danger"></small>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                         <input class="form-control form-control-lg" id="surat_pengantar" name="surat_pengantar" type="file" @if($b != 'Revisi Proposal') disabled @endif>
                         
                         <div class="d-flex justify-content-between">
-                            <small><a href="{{Storage::url('FILE_SURAT_PENGANTAR/'.$proposal->PROPOSAL_SURAT_PENGANTAR)}}" class="btn btn-link btn-sm" target="new">{{$proposal->PROPOSAL_SURAT_PENGANTAR}}</a></small>
+                            <small><a href="{{Storage::url('FILE_SURAT_PENGANTAR/'.$proposal->proposal_surat_pengantar)}}" class="btn btn-link btn-sm" target="new">{{$proposal->proposal_surat_pengantar}}</a></small>
                             <small id="surat_pengantarError" class="text-danger"></small>
                             <small class="text-dark">pdf maks. 2MB</small>
                         </div>
@@ -73,7 +73,7 @@
                         <label for="proposal_penelitian" class="form-label required ">Revisi Proposal Penelitian</label>
                         <input class="form-control form-control-lg" id="proposal_penelitian" name="proposal_penelitian" type="file" @if($b != 'Revisi Proposal') disabled @endif>
                         <div class="d-flex justify-content-between">
-                            <small><a href="{{Storage::url('FILE_PROPOSAL_PENELITIAN/'.$proposal->PROPOSAL_PROPOSAL_PENELITIAN)}}" class="btn btn-link btn-sm" target="new">{{$proposal->PROPOSAL_PROPOSAL_PENELITIAN}}</a></small>
+                            <small><a href="{{Storage::url('FILE_PROPOSAL_PENELITIAN/'.$proposal->proposal_proposal_penelitian)}}" class="btn btn-link btn-sm" target="new">{{$proposal->proposal_proposal_penelitian}}</a></small>
                             <small id="proposal_penelitianError" class="text-danger"></small>
                             <small class="text-dark">pdf maks. 2MB</small>
                         </div>
@@ -87,7 +87,7 @@
                         <label for="kaji_etik" class="form-label">Kaji Etik</label>
                         <input class="form-control form-control-lg" id="kaji_etik" name="kaji_etik" type="file" @if($b != 'Revisi Proposal') disabled @endif >
                         <div class="d-flex justify-content-between">
-                            <small><a href="{{Storage::url('FILE_KAJI_ETIK/'.$proposal->PROPOSAL_KAJI_ETIK)}}" class="btn btn-link btn-sm" target="new">{{$proposal->PROPOSAL_KAJI_ETIK}}</a></small>
+                            <small><a href="{{Storage::url('FILE_KAJI_ETIK/'.$proposal->proposal_kaji_etik)}}" class="btn btn-link btn-sm" target="new">{{$proposal->proposal_kaji_etik}}</a></small>
                             <small id="kaji_etikError" class="text-danger"></small>
                             <small class="text-dark">pdf maks. 2MB</small>
                         </div>
@@ -100,7 +100,7 @@
                         <label for="sertifikat_gcp" class="form-label">Sertifikat GCP</label>
                         <input class="form-control form-control-lg" id="sertifikat_gcp" name="sertifikat_gcp" type="file" @if($b != 'Revisi Proposal') disabled @endif >
                         <div class="d-flex justify-content-between">
-                            <small><a href="{{Storage::url('FILE_SERTIFIKAT_GCP/'.$proposal->PROPOSAL_SERTIFIKAT_GCP)}}" class="btn btn-link btn-sm" target="new">{{$proposal->PROPOSAL_SERTIFIKAT_GCP}}</a></small>
+                            <small><a href="{{Storage::url('FILE_SERTIFIKAT_GCP/'.$proposal->proposal_sertifikat_gcp)}}" class="btn btn-link btn-sm" target="new">{{$proposal->proposal_sertifikat_gcp}}</a></small>
                             <small id="sertifikat_gcpError" class="text-danger"></small>
                             <small class="text-dark">pdf maks. 2MB</small>
                         </div>
@@ -109,7 +109,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    @if($proposal->PROPOSAL_STATUS == 'Revisi Proposal') <button class="btn btn-sm btn-success float-end">Perbaiki</button> @endif
+                    @if($proposal->proposal_status == 'Revisi Proposal') <button class="btn btn-sm btn-success float-end">Perbaiki</button> @endif
                     <a href="{{url('/')}}" class="btn btn-sm btn-dark float-end me-2">Kembali</a>
                 </div>
             </div>

@@ -26,7 +26,7 @@
 <div class="card card-xxl-stretch p-5">
     <div class="card-header">
         <h3 class="card-title align-items-start flex-column">
-            <span class="card-label fw-bolder text-dark">Pengajuan Penelitian #{{$data->PROPOSAL_KODE}}</span>
+            <span class="card-label fw-bolder text-dark">Pengajuan Penelitian #{{$data->proposal_kode}}</span>
             <span class="text-muted mt-1 fw-bold fs-7">data detail</span>
         </h3>
         {{-- <div class="card-toolbar">
@@ -43,8 +43,8 @@
                             <tr>
                                 <td class="fw-bold">Nama Peneliti</td>
                                 <td>
-                                    @if($data->PROPOSAL_PENELITI_UTAMA) 
-                                        {{$data->PROPOSAL_PENELITI_UTAMA}} 
+                                    @if($data->proposal_peneliti_utama) 
+                                        {{$data->proposal_peneliti_utama}} 
                                     @else 
                                         - 
                                     @endif
@@ -53,8 +53,8 @@
                             <tr>
                                 <td class="fw-bold">Tim Peneliti</td>
                                 <td>
-                                    @if($data->PROPOSAL_TIM_PENELITI) 
-                                        {{$data->PROPOSAL_TIM_PENELITI}} 
+                                    @if($data->proposal_tim_peneliti) 
+                                        {{$data->proposal_tim_peneliti}} 
                                     @else 
                                         - 
                                     @endif
@@ -63,8 +63,8 @@
                             <tr>
                                 <td class="fw-bold">Judul Penelitian</td>
                                 <td>
-                                    @if($data->PROPOSAL_JUDUL_PENELITIAN) 
-                                        {{$data->PROPOSAL_JUDUL_PENELITIAN}} 
+                                    @if($data->proposal_judul_penelitian) 
+                                        {{$data->proposal_judul_penelitian}} 
                                     @else 
                                         - 
                                     @endif
@@ -73,8 +73,8 @@
                             <tr>
                                 <td class="fw-bold">Surat Permohonan</td>
                                 <td>
-                                    @if($data->PROPOSAL_SURAT_PENGANTAR)
-                                        <a href="{{Storage::url('FILE_SURAT_PENGANTAR/'.$data->PROPOSAL_SURAT_PENGANTAR)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_SURAT_PENGANTAR}}</a>  
+                                    @if($data->proposal_surat_pengantar)
+                                        <a href="{{Storage::url('FILE_SURAT_PENGANTAR/'.$data->proposal_surat_pengantar)}}" target="_blank" class="text-dark">{{$data->proposal_surat_pengantar}}</a>  
                                     @else 
                                         - 
                                     @endif
@@ -83,8 +83,8 @@
                             <tr>
                                 <td class="fw-bold">Proposal Penelitian</td>
                                 <td>
-                                    @if($data->PROPOSAL_PROPOSAL_PENELITIAN) 
-                                        <a href="{{Storage::url('FILE_PROPOSAL_PENELITIAN/'.$data->PROPOSAL_PROPOSAL_PENELITIAN)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_PROPOSAL_PENELITIAN}}</a> 
+                                    @if($data->proposal_proposal_penelitian) 
+                                        <a href="{{Storage::url('FILE_PROPOSAL_PENELITIAN/'.$data->proposal_proposal_penelitian)}}" target="_blank" class="text-dark">{{$data->proposal_proposal_penelitian}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -93,8 +93,8 @@
                             <tr>
                                 <td class="fw-bold">Kaji Etik</td>
                                 <td>
-                                    @if($data->PROPOSAL_KAJI_ETIK) 
-                                        <a href="{{Storage::url('FILE_KAJI_ETIK/'.$data->PROPOSAL_KAJI_ETIK)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_KAJI_ETIK}}</a> 
+                                    @if($data->proposal_kaji_etik) 
+                                        <a href="{{Storage::url('FILE_KAJI_ETIK/'.$data->proposal_kaji_etik)}}" target="_blank" class="text-dark">{{$data->proposal_kaji_etik}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -103,8 +103,8 @@
                             <tr>
                                 <td class="fw-bold">Sertifikat GCP</td>
                                 <td>
-                                    @if($data->PROPOSAL_SERTIFIKAT_GCP) 
-                                        <a href="{{Storage::url('FILE_SERTIFIKAT_GCP/'.$data->PROPOSAL_SERTIFIKAT_GCP)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_SERTIFIKAT_GCP}}</a> 
+                                    @if($data->proposal_sertifikat_gcp) 
+                                        <a href="{{Storage::url('FILE_SERTIFIKAT_GCP/'.$data->proposal_sertifikat_gcp)}}" target="_blank" class="text-dark">{{$data->proposal_sertifikat_gcp}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -113,8 +113,8 @@
                             <tr>
                                 <td class="fw-bold">Kaji Etik RSPI</td>
                                 <td>
-                                    @if($data->PROPOSAL_KAJI_ETIK_RSPI) 
-                                        <a href="{{Storage::url('FILE_KAJI_ETIK_RSPI/'.$data->PROPOSAL_KAJI_ETIK_RSPI)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_KAJI_ETIK_RSPI}}</a> 
+                                    @if($data->proposal_kaji_etik_rspi) 
+                                        <a href="{{Storage::url('FILE_KAJI_ETIK_RSPI/'.$data->proposal_kaji_etik_rspi)}}" target="_blank" class="text-dark">{{$data->proposal_kaji_etik_rspi}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -123,8 +123,8 @@
                             <tr>
                                 <td class="fw-bold">PKS</td>
                                 <td>
-                                    @if($data->PROPOSAL_PKS) 
-                                        <a href="{{Storage::url('FILE_PKS/'.$data->PROPOSAL_PKS)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_PKS}}</a> 
+                                    @if($data->proposal_pks) 
+                                        <a href="{{Storage::url('FILE_PKS/'.$data->proposal_pks)}}" target="_blank" class="text-dark">{{$data->proposal_pks}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -133,8 +133,8 @@
                             <tr>
                                 <td class="fw-bold">MTA</td>
                                 <td>
-                                    @if($data->PROPOSAL_MTA) 
-                                        <a href="{{Storage::url('FILE_MTA/'.$data->PROPOSAL_MTA)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_MTA}}</a> 
+                                    @if($data->proposal_mta) 
+                                        <a href="{{Storage::url('FILE_MTA/'.$data->proposal_mta)}}" target="_blank" class="text-dark">{{$data->proposal_mta}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -143,8 +143,8 @@
                             <tr>
                                 <td class="fw-bold">Pernyataan Kerahasiaan Data</td>
                                 <td>
-                                    @if($data->PROPOSAL_KERAHASIAAN) 
-                                        <a href="{{Storage::url('FILE_KERAHASIAAN/'.$data->PROPOSAL_KERAHASIAAN)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_KERAHASIAAN}}</a> 
+                                    @if($data->proposal_kerahasiaan) 
+                                        <a href="{{Storage::url('FILE_KERAHASIAAN/'.$data->proposal_kerahasiaan)}}" target="_blank" class="text-dark">{{$data->proposal_kerahasiaan}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -153,8 +153,8 @@
                             <tr>
                                 <td class="fw-bold">Bukti Administrasi</td>
                                 <td>
-                                    @if($data->PROPOSAL_BUKTI_BAYAR) 
-                                        <a href="{{Storage::url('FILE_BUKTI_BAYAR/'.$data->PROPOSAL_BUKTI_BAYAR)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_BUKTI_BAYAR}}</a> 
+                                    @if($data->proposal_bukti_bayar) 
+                                        <a href="{{Storage::url('FILE_BUKTI_BAYAR/'.$data->proposal_bukti_bayar)}}" target="_blank" class="text-dark">{{$data->proposal_bukti_bayar}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -163,8 +163,8 @@
                             <tr>
                                 <td class="fw-bold">Draft Izin Penelitian</td>
                                 <td>
-                                    @if($data->PROPOSAL_IZIN_PENELITIAN_DRAFT) 
-                                        <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN_DRAFT/'.$data->PROPOSAL_IZIN_PENELITIAN_DRAFT)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_IZIN_PENELITIAN_DRAFT}}</a> 
+                                    @if($data->proposal_izin_penelitian_draft) 
+                                        <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN_DRAFT/'.$data->proposal_izin_penelitian_draft)}}" target="_blank" class="text-dark">{{$data->proposal_izin_penelitian_draft}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -173,8 +173,8 @@
                             <tr>
                                 <td class="fw-bold">Izin Penelitian Resmi</td>
                                 <td>
-                                    @if($data->PROPOSAL_IZIN_PENELITIAN) 
-                                        <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN/'.$data->PROPOSAL_IZIN_PENELITIAN)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_IZIN_PENELITIAN}}</a> 
+                                    @if($data->proposal_izin_penelitian) 
+                                        <a href="{{Storage::url('FILE_SURAT_IZIN_PENELITIAN/'.$data->proposal_izin_penelitian)}}" target="_blank" class="text-dark">{{$data->proposal_izin_penelitian}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -183,8 +183,8 @@
                             <tr>
                                 <td class="fw-bold">Laporan Penelitian Akhir</td>
                                 <td>
-                                    @if($data->PROPOSAL_LAPORAN_PENELITIAN) 
-                                        <a href="{{Storage::url('FILE_LAPORAN_PENELITIAN/'.$data->PROPOSAL_LAPORAN_PENELITIAN)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_LAPORAN_PENELITIAN}}</a> 
+                                    @if($data->proposal_laporan_penelitian) 
+                                        <a href="{{Storage::url('FILE_LAPORAN_PENELITIAN/'.$data->proposal_laporan_penelitian)}}" target="_blank" class="text-dark">{{$data->proposal_laporan_penelitian}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -193,8 +193,8 @@
                             <tr>
                                 <td class="fw-bold">Raw Data Penelitian</td>
                                 <td>
-                                    @if($data->PROPOSAL_RAW_DATA_PENELITIAN) 
-                                        <a href="{{Storage::url('FILE_RAW_DATA_PENELITIAN/'.$data->PROPOSAL_RAW_DATA_PENELITIAN)}}" target="_blank" class="text-dark">{{$data->PROPOSAL_RAW_DATA_PENELITIAN}}</a> 
+                                    @if($data->proposal_raw_data_penelitian) 
+                                        <a href="{{Storage::url('FILE_RAW_DATA_PENELITIAN/'.$data->proposal_raw_data_penelitian)}}" target="_blank" class="text-dark">{{$data->proposal_raw_data_penelitian}}</a> 
                                     @else 
                                         - 
                                     @endif
@@ -202,7 +202,7 @@
                             </tr>
                             <tr>
                                 <td class="fw-bold">Perjalanan Data</td>
-                                <td>Tahapan {{$data->PROPOSAL_TAHAPAN}} dengan Status: {{$data->PROPOSAL_STATUS}} </td>
+                                <td>Tahapan {{$data->proposal_tahapan}} dengan Status: {{$data->proposal_status}} </td>
                             </tr>
                         </table>
                     </div>

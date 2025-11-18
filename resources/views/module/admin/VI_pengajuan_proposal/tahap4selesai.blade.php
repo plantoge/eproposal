@@ -25,8 +25,8 @@
         <div class="card-header">
             <h3 class="card-title align-items-start flex-column">
                 <span class="card-label fs-2 fw-bolder text-dark">Dokumen Akhir</span>
-                <span class="text-muted mt-1 fw-bold fs-7">#{{$proposal->PROPOSAL_KODE}}, Silahkan Upload Laporan Penelitian dan Raw Data Penelitian untuk mendapatkan Surat Izin Penelitian resmi dari RSPI Sulianti Saroso.</span>
-                <span class="proposal" hidden>{{$proposal->PROPOSAL_ID}}</span>
+                <span class="text-muted mt-1 fw-bold fs-7">#{{$proposal->proposal_kode}}, Silahkan Upload Laporan Penelitian dan Raw Data Penelitian untuk mendapatkan Surat Izin Penelitian resmi dari RSPI Sulianti Saroso.</span>
+                <span class="proposal" hidden>{{$proposal->proposal_id}}</span>
             </h3>
         </div>
         <div class="card-body">
@@ -39,9 +39,9 @@
                             <small id="file_laporan_penelitian_error" class="text-danger"></small>
                             <small class="text-dark">pdf & 2MB</small>
                         </div>
-                        @if($proposal->PROPOSAL_LAPORAN_PENELITIAN != NULL) 
+                        @if($proposal->proposal_laporan_penelitian != NULL) 
                             <small>
-                                <a href="{{Storage::url('FILE_LAPORAN_PENELITIAN/'.$proposal->PROPOSAL_LAPORAN_PENELITIAN)}}" class="btn btn-link btn-sm">{{$proposal->PROPOSAL_LAPORAN_PENELITIAN}}</a>
+                                <a href="{{Storage::url('FILE_LAPORAN_PENELITIAN/'.$proposal->proposal_laporan_penelitian)}}" class="btn btn-link btn-sm">{{$proposal->proposal_laporan_penelitian}}</a>
                             </small>
                         @endif
                     </div>
@@ -56,9 +56,9 @@
                             <small id="file_raw_data_error" class="text-danger"></small>
                             <small class="text-dark">pdf & 2MB</small>
                         </div>
-                        @if($proposal->PROPOSAL_RAW_DATA_PENELITIAN != NULL) 
+                        @if($proposal->proposal_raw_data_penelitian != NULL) 
                             <small>
-                                <a href="{{Storage::url('FILE_RAW_DATA_PENELITIAN/'.$proposal->PROPOSAL_RAW_DATA_PENELITIAN)}}" class="btn btn-link btn-sm">{{$proposal->PROPOSAL_RAW_DATA_PENELITIAN}}</a>
+                                <a href="{{Storage::url('FILE_RAW_DATA_PENELITIAN/'.$proposal->proposal_raw_data_penelitian)}}" class="btn btn-link btn-sm">{{$proposal->proposal_raw_data_penelitian}}</a>
                             </small>
                         @endif
                     </div>
