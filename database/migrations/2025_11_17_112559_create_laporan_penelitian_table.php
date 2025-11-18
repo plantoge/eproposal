@@ -39,6 +39,7 @@ class CreateLaporanPenelitianTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eproposal.laporan_penelitian');
+        // Schema::dropIfExists('eproposal.laporan_penelitian');
+        DB::statement('DROP TABLE IF EXISTS eproposal.laporan_penelitian CASCADE');
     }
 }

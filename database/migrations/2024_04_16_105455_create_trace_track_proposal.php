@@ -37,6 +37,7 @@ class CreateTraceTrackProposal extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eproposal.trace_track_proposal');
+        // Schema::dropIfExists('eproposal.trace_track_proposal');
+        DB::statement('DROP TABLE IF EXISTS eproposal.trace_track_proposal CASCADE');
     }
 }

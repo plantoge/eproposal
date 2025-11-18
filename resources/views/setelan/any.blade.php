@@ -121,7 +121,7 @@
 
     </div>
 
-    <div class="col-sm-12 col-lg-6">
+    {{-- <div class="col-sm-12 col-lg-6">
 
         <div class="card  mb-5 mb-xl-10">
             <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_signin_method">
@@ -178,7 +178,7 @@
             </div>
         </div>
 
-    </div>
+    </div> --}}
 
     <div class="col-sm-12 col-lg-6">
 

@@ -46,6 +46,7 @@ class CreatePengajuanPenelitian extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eproposal.pengajuan_penelitian');
+        // Schema::dropIfExists('eproposal.pengajuan_penelitian');
+        DB::statement('DROP TABLE IF EXISTS eproposal.pengajuan_penelitian CASCADE');
     }
 }

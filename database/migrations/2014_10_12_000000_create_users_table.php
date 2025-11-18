@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('institusi_asal')->nullable();
             $table->string('jk')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('kategori_pendidikan')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
         });
 

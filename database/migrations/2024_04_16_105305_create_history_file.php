@@ -36,6 +36,7 @@ class CreateHistoryFile extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eproposal.history_file');
+        // Schema::dropIfExists('eproposal.history_file');
+        DB::statement('DROP TABLE IF EXISTS eproposal.history_file CASCADE');
     }
 }

@@ -61,6 +61,7 @@ class CreateProposal extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eproposal.proposal');
+        // Schema::dropIfExists('eproposal.proposal');
+        DB::statement('DROP TABLE IF EXISTS eproposal.proposal CASCADE');
     }
 }
