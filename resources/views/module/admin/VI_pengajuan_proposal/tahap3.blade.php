@@ -39,7 +39,7 @@
 
                 </div>
                 
-                <span class="proposaltahap3" hidden>{{$proposal->proposal_id}}</span>
+                <span class="proposaltahap3" hidden>{{$proposal->id}}</span>
             </div>
 
         </div>
@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-sm-12 col-lg-10 mb-3"> 
                     <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading mb-4">Rekening Bank {{$informasi->NAMA_BANK}}</h4>
+                        <h4 class="alert-heading mb-4">Rekening Bank {{$informasi->nama_bank ?? '-'}}</h4>
                             <div class="row">
                                 <div class="col-sm-12 col-md-3 col-lg-3">
                                     <div class="">
@@ -58,10 +58,10 @@
                                 </div>
                                 <div class="col-sm-12 col-md-9 col-lg-9">
                                     <h5 class="text-dark mb-1 font-16 font-weight-medium">
-                                        {{$informasi->PEMILIK_REKENING}}
+                                        {{$informasi->pemilik_rekening ?? '-'}}
                                     </h5>
                                     <h5 class="text-dark mb-1 font-16 font-weight-medium">
-                                        {{$informasi->NOMOR_REKENING}}
+                                        {{$informasi->nomor_rekening ?? '-'}}
                                     </h5>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                         <label for="sertifikat_gcp" class="form-label bg-light-success required">
                             Upload Bukti Transfer 
                         </label> <br>
-                        {{-- <label class="form-label"> CP: {{$informasi->CP_KAJI_ETIK}} ({{$informasi->WA_KAJI_ETIK}})</label> --}}
+                        {{-- <label class="form-label"> CP: {{$informasi->cp_kaji_etik}} ({{$informasi->wa_kaji_etik}})</label> --}}
                         <input class="form-control form-control-lg" id="file_bukti_transfer" name="file_bukti_transfer" type="file">
                         <div class="d-flex justify-content-between">
                             <small id="bukti_error" class="text-danger"></small>
@@ -144,7 +144,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            {!! $informasi->DESKRIPSI_BIAYA !!}
+                            {!! $informasi->deskripsi_biaya ?? '-' !!}
                         </div>
                     </div>
                 </div>

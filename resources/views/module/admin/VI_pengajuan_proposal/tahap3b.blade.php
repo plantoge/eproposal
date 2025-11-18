@@ -34,13 +34,13 @@
                     <div class="d-flex flex-column pe-0 pe-sm-10">
                         <span class="text-dark mt-1 fw-bold fs-7">
                             {{-- <span class="fs-6">Informasi!</span>  --}}
-                            <p>Pelaksanaan Penelitian sudah bisa dilakukan. Silahkan menghubungi kontak admin untuk informasi lebih lanjut. {{$informasi->CP_KERAHASIAAN}} {{$informasi->WA_KERAHASIAAN}}.</p>
+                            <p>Pelaksanaan Penelitian sudah bisa dilakukan. Silahkan menghubungi kontak admin untuk informasi lebih lanjut. {{$informasi->CP_KERAHASIAAN ?? '-'}} {{$informasi->WA_KERAHASIAAN ?? '-'}}.</p>
                         </span>
                     </div>
 
                 </div>
                 
-                <span class="proposaltahap3" hidden>{{$proposal->proposal_id}}</span>
+                <span class="proposaltahap3" hidden>{{$proposal->id}}</span>
             </div>
 
         </div>

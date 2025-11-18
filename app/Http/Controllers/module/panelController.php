@@ -15,7 +15,7 @@ class panelController extends Controller
             return redirect(URL('pengajuan-proposal'));
         }
 
-        $informasi = infokontak_model::find('001')->first();
+        $informasi = infokontak_model::latest()->first();
 
         return view('module/admin/panelDashboard', [
             'informasi' => $informasi
@@ -29,7 +29,7 @@ class panelController extends Controller
 
     public function store_informasi(Request $request)
     {
-        $update = infokontak_model::find('001');
+        $update = infokontak_model::latest()->first();
         $update->deskripsi_biaya = $request->deskripsi_biaya;
         $update->telepon = $request->telepon;
         $update->fax = $request->fax;

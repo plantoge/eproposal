@@ -28,7 +28,7 @@
             <h3 class="card-title align-items-start flex-column">
                 <span class="card-label fs-2 fw-bolder text-dark">Dokumen Akhir</span>
                 <span class="text-muted mt-1 fw-bold fs-7">#{{$proposal->proposal_kode}}, Silahkan upload Laporan Penelitian dan Raw Data Penelitian untuk mendapatkan Surat Izin Penelitian resmi dari RSPI Prof. Dr. Sulianti Saroso</span>
-                <span class="proposal" hidden>{{$proposal->proposal_id}}</span>
+                <span class="proposal" hidden>{{$proposal->id}}</span>
             </h3>
         </div>
         <div class="card-body">

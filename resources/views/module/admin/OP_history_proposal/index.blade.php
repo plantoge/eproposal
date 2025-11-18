@@ -73,17 +73,17 @@
                             <tr class="align-middle border-secondary border-bottom">
                                 <td>{{$loop->iteration}}</td>
                                 <td>
-                                    <a href="{{url('/antrian-proposal/'.$data->proposal_id)}}" class="btn btn-sm btn-secondary w-100">Detail</a> <br>
-                                    <button class="btn btn-sm btn-danger text-white btn-delete-pengajuan disabled" hidden data-pengajuan="{{$data->proposal_id}}">
+                                    <a href="{{url('/antrian-proposal/'.$data->id)}}" class="btn btn-sm btn-secondary w-100">Detail</a> <br>
+                                    <button class="btn btn-sm btn-danger text-white btn-delete-pengajuan disabled" hidden data-pengajuan="{{$data->id}}">
                                         Batalkan
                                     </button>
                                     <a 
-                                        href="{{url('riwayat-proposal-return/'.$data->proposal_id)}}"
+                                        href="{{url('riwayat-proposal-return/'.$data->id)}}"
                                         onclick="return confirm('Yakin di return ? data akan di kembalikan ke antrian')"
                                         class="btn btn-sm btn-warning text-dark modalstatus">
                                         {{-- data-bs-toggle="modal" 
                                         data-bs-target="#modalstatus" 
-                                        data-pengajuan="{{$data->proposal_id}}"
+                                        data-pengajuan="{{$data->id}}"
                                         data-status="{{$data->proposal_status}}"> --}}
                                         <b>Return</b>
                                     </a>

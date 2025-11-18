@@ -152,7 +152,7 @@ class pengajuanProposalController extends Controller
     public function progress($id)
     {
         $proposal = proposal::findorfail($id);
-        $informasi = infokontak_model::find('001')->first();
+        $informasi = infokontak_model::latest()->first();
         return view('module/admin/VI_pengajuan_proposal/create_wizard_progress', [
             'proposal' => $proposal,
             'informasi' => $informasi,
@@ -169,7 +169,6 @@ class pengajuanProposalController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd($request->all(), $request->surat_pengantar == '');
         $rule = [
             'proposal_penelitian' => ['required', 'max:2048', 'mimes:pdf', new CekFileJahatRule()],
             'surat_pengantar' => ['max:2048', 'mimes:pdf', new CekFileJahatRule()],
@@ -198,6 +197,7 @@ class pengajuanProposalController extends Controller
             ]);
         }
 
+        DB::beginTransaction();
         // lolos validasi
         $update = proposal::findorfail($id);
 
@@ -239,6 +239,8 @@ class pengajuanProposalController extends Controller
         $update->proposal_user_id             = Auth::user()->id;
         $update->proposal_status              = 'Verifikasi Revisi Proposal';
         $update->Save();
+
+        DB::commit();
 
         $responseData = [
             'status_code' => 200,
@@ -286,26 +288,28 @@ class pengajuanProposalController extends Controller
             ]);
         }
 
+        DB::beginTransaction();
+
         $update = proposal::findorfail($id);
 
         if($request->file_kaji_etik_rspi){
-            if($update->proposal_kaji_etik_RSPI != null){ Filestorage::delete('FILE_KAJI_ETIK_RSPI', $update->proposal_kaji_etik_RSPI); }
-            $update->proposal_kaji_etik_RSPI     = Filestorage::upload('FILE_KAJI_ETIK_RSPI', $request->file('file_kaji_etik_rspi'));
+            if($update->proposal_kaji_etik_rspi != null){ Filestorage::delete('FILE_KAJI_ETIK_RSPI', $update->proposal_kaji_etik_rspi); }
+            $update->proposal_kaji_etik_rspi     = Filestorage::upload('FILE_KAJI_ETIK_RSPI', $request->file('file_kaji_etik_rspi'));
         }
 
         if($request->file_kerahasiaan){
-            if($update->PROPOSAL_KERAHASIAAN != null){ Filestorage::delete('FILE_KERAHASIAAN', $update->PROPOSAL_KERAHASIAAN); }
-            $update->PROPOSAL_KERAHASIAAN     = Filestorage::upload('FILE_KERAHASIAAN', $request->file('file_kerahasiaan'));
+            if($update->proposal_kerahasiaan != null){ Filestorage::delete('FILE_KERAHASIAAN', $update->proposal_kerahasiaan); }
+            $update->proposal_kerahasiaan     = Filestorage::upload('FILE_KERAHASIAAN', $request->file('file_kerahasiaan'));
         }
 
         if($request->file_pks){
-            if($update->PROPOSAL_PKS != null){ Filestorage::delete('FILE_PKS', $update->PROPOSAL_PKS); }
-            $update->PROPOSAL_PKS     = Filestorage::upload('FILE_PKS', $request->file('file_pks'));
+            if($update->proposal_pks != null){ Filestorage::delete('FILE_PKS', $update->proposal_pks); }
+            $update->proposal_pks     = Filestorage::upload('FILE_PKS', $request->file('file_pks'));
         }
 
         if($request->file_mta){
-            if($update->PROPOSAL_MTA != null){ Filestorage::delete('FILE_MTA', $update->PROPOSAL_MTA); }
-            $update->PROPOSAL_MTA     = Filestorage::upload('FILE_MTA', $request->file('file_mta'));
+            if($update->proposal_mta != null){ Filestorage::delete('FILE_MTA', $update->proposal_mta); }
+            $update->proposal_mta     = Filestorage::upload('FILE_MTA', $request->file('file_mta'));
         }
 
         $update->proposal_institusi_asal      = Auth::user()->institusi_asal;
@@ -314,6 +318,8 @@ class pengajuanProposalController extends Controller
         $update->proposal_user_id             = Auth::user()->id;
         $update->proposal_status              = 'Verifikasi Dokumen';
         $update->Save();
+
+        DB::commit();
 
         $responseData = [
             'status_code' => 200,
@@ -347,11 +353,13 @@ class pengajuanProposalController extends Controller
             ]);
         }
 
+        DB::beginTransaction();
+
         $update = proposal::findorfail($id);
 
         if($request->file_bukti_transfer){
-            if($update->PROPOSAL_BUKTI_BAYAR != null){ Filestorage::delete('FILE_BUKTI_BAYAR', $update->PROPOSAL_BUKTI_BAYAR); }
-            $update->PROPOSAL_BUKTI_BAYAR     = Filestorage::upload('FILE_BUKTI_BAYAR', $request->file('file_bukti_transfer'));
+            if($update->proposal_bukti_bayar != null){ Filestorage::delete('FILE_BUKTI_BAYAR', $update->proposal_bukti_bayar); }
+            $update->proposal_bukti_bayar     = Filestorage::upload('FILE_BUKTI_BAYAR', $request->file('file_bukti_transfer'));
         }
 
         $update->proposal_institusi_asal      = Auth::user()->institusi_asal;
@@ -366,6 +374,8 @@ class pengajuanProposalController extends Controller
             'message' => 'Berhasil',
             'additionalData' => 'Nilai tambahan jika diperlukan.'
         ];
+
+        DB::commit();
 
         $url = url('/antrian-proposal/'.$update->id);
         $pesan ='<b class="fs-7">#'.$update->proposal_kode.' sudah upload bukti bayar</b> <br> <a href="'.$url.'">Klik Disini</a> <br> <small>'.date('d-m-Y H:i:s').'</small>';
@@ -401,6 +411,8 @@ class pengajuanProposalController extends Controller
             ]);
         }
 
+        DB::beginTransaction();
+
         $update = proposal::findorfail($id);
         
         if($request->file_laporan_penelitian){
@@ -418,7 +430,9 @@ class pengajuanProposalController extends Controller
         $update->proposal_phone               = Auth::user()->phone;
         $update->proposal_user_id             = Auth::user()->id;
         $update->proposal_status              = 'Verifikasi Akhir';
-        $update->Save();
+        $update->save();
+
+        DB::commit();
 
         $responseData = [
             'status_code' => 200,
@@ -435,6 +449,8 @@ class pengajuanProposalController extends Controller
 
     public function destroy(Request $request)
     {
+        DB::beginTransaction();
+        
         $data       = proposal::where('id', $request->pengajuan)->first();
         $existsdata1 = $data !== null;
 
@@ -444,22 +460,26 @@ class pengajuanProposalController extends Controller
             if($data->proposal_proposal_penelitian){ Filestorage::delete('/FILE_PROPOSAL_PENELITIAN/', $data->proposal_proposal_penelitian); }
             if($data->proposal_kaji_etik){ Filestorage::delete('/FILE_KAJI_ETIK/', $data->proposal_kaji_etik); }
             if($data->proposal_sertifikat_gcp){ Filestorage::delete('/FILE_SERTIFIKAT_GCP/', $data->proposal_sertifikat_gcp); }
-            if($data->proposal_kaji_etik_RSPI){ Filestorage::delete('/FILE_KAJI_ETIK_RSPI/', $data->proposal_kaji_etik_RSPI); }
-            if($data->PROPOSAL_PKS){ Filestorage::delete('/FILE_PKS/', $data->PROPOSAL_PKS); }
-            if($data->PROPOSAL_MTA){ Filestorage::delete('/FILE_MTA/', $data->PROPOSAL_MTA); }
-            if($data->PROPOSAL_BUKTI_BAYAR){ Filestorage::delete('/FILE_BUKTI_BAYAR/', $data->PROPOSAL_BUKTI_BAYAR); }
+            if($data->proposal_kaji_etik_rspi){ Filestorage::delete('/FILE_KAJI_ETIK_RSPI/', $data->proposal_kaji_etik_rspi); }
+            if($data->proposal_pks){ Filestorage::delete('/FILE_PKS/', $data->proposal_pks); }
+            if($data->proposal_mta){ Filestorage::delete('/FILE_MTA/', $data->proposal_mta); }
+            if($data->proposal_bukti_bayar){ Filestorage::delete('/FILE_BUKTI_BAYAR/', $data->proposal_bukti_bayar); }
             if($data->proposal_laporan_penelitian){ Filestorage::delete('/FILE_LAPORAN_PENELITIAN/', $data->proposal_laporan_penelitian); }
             if($data->proposal_raw_data_penelitian){ Filestorage::delete('/FILE_RAW_DATA_PENELITIAN/', $data->proposal_raw_data_penelitian); }
-            if($data->PROPOSAL_IZIN_PENELITIAN_DRAFT){ Filestorage::delete('/FILE_SURAT_IZIN_PENELITIAN_DRAFT/', $data->PROPOSAL_IZIN_PENELITIAN_DRAFT); }
-            if($data->PROPOSAL_IZIN_PENELITIAN){ Filestorage::delete('/FILE_SURAT_IZIN_PENELITIAN/', $data->PROPOSAL_IZIN_PENELITIAN); }
-            if($data->PROPOSAL_SURAT_PENOLAKAN){ Filestorage::delete('/FILE_SURAT_PENOLAKAN/', $data->PROPOSAL_SURAT_PENOLAKAN); }
+            if($data->proposal_izin_penelitian_draft){ Filestorage::delete('/FILE_SURAT_IZIN_PENELITIAN_DRAFT/', $data->proposal_izin_penelitian_draft); }
+            if($data->proposal_izin_penelitian){ Filestorage::delete('/FILE_SURAT_IZIN_PENELITIAN/', $data->proposal_izin_penelitian); }
+            if($data->proposal_surat_penolakan){ Filestorage::delete('/FILE_SURAT_PENOLAKAN/', $data->proposal_surat_penolakan); }
             
             $data->delete();
+
+            
 
             $responseData = [
                 'status_code' => 200,
                 'message' => 'Data File terhapus',
             ];
+
+            DB::commit();
 
             return response()->json($responseData, 200);
         }else{

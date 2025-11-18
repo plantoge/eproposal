@@ -16,7 +16,7 @@
 
                 </div>
                 
-                <span class="proposaltahap2" hidden>{{$proposal->proposal_id}}</span>
+                <span class="proposaltahap2" hidden>{{$proposal->id}}</span>
             </div>
 
         </div>
@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-sm-12 col-lg-8 mb-3"> 
                     <div class="mb-5 fv-row fv-plugins-icon-container">
-                        <label class="form-label"> CP: {{$informasi->cp_kaji_etik}} ({{$informasi->wa_kaji_etik}} WhatsApp Only)</label> <br>
+                        <label class="form-label"> CP: {{$informasi->cp_kaji_etik ?? '-'}} ({{$informasi->wa_kaji_etik ?? '-'}} WhatsApp Only)</label> <br>
                         <label for="file_kaji_etik_rspi" class="form-label bg-light-success required">
                             Kaji Etik (Ethical Clearance)
                         </label>
@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-sm-12 col-lg-8 mb-3"> 
                     <div class="mb-5 fv-row fv-plugins-icon-container">
-                        <label class="form-label"> CP: {{$informasi->cp_kerahasiaan}} ({{$informasi->wa_kerahasiaan}} WhatsApp Only)</label> <br>
+                        <label class="form-label"> CP: {{$informasi->cp_kerahasiaan ?? '-'}} ({{$informasi->wa_kerahasiaan ?? '-'}} WhatsApp Only)</label> <br>
                         <label for="sertifikat_gcp" class="form-label bg-light-success required">
                             Surat Pernyataan Kerahasiaan Data 
                         </label> <br>
@@ -64,7 +64,7 @@
             <div class="row">
                 <div class="col-sm-12 col-lg-8 mb-3"> 
                     <div class="mb-5 fv-row fv-plugins-icon-container">
-                        <label class="form-label"> CP: {{$informasi->cp_pks}} ({{$informasi->wa_pks}} WhatsApp Only)</label> <br>
+                        <label class="form-label"> CP: {{$informasi->cp_pks ?? '-'}} ({{$informasi->wa_pks ?? '-'}} WhatsApp Only)</label> <br>
                         <label for="file_pks" class="form-label bg-light-success">Perjanjian Kerjasama (PKS)</label>
                         <input class="form-control form-control-lg" id="file_pks" name="file_pks" type="file">
                         <div class="d-flex justify-content-between">
@@ -82,7 +82,7 @@
             <div class="row">
                 <div class="col-sm-12 col-lg-8 mb-3"> 
                     <div class="mb-5 fv-row fv-plugins-icon-container">
-                        <label class="form-label"> CP: {{$informasi->cp_mta}} ({{$informasi->wa_mta}} WhatsApp Only)</label> <br>
+                        <label class="form-label"> CP: {{$informasi->cp_mta ?? '-'}} ({{$informasi->wa_mta ?? '-'}} WhatsApp Only)</label> <br>
                         <label for="file_mta" class="form-label bg-light-success">Material Transfer Agreement (MTA)</label>
                         <input class="form-control form-control-lg" id="file_mta" name="file_mta" type="file">
                         <div class="d-flex justify-content-between">

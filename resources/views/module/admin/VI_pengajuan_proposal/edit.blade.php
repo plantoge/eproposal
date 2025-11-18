@@ -20,7 +20,7 @@
 
                 </div>
                 
-                <span class="proposal" hidden>{{$proposal->proposal_id}}</span>
+                <span class="proposal" hidden>{{$proposal->id}}</span>
             </div>
         </div>
         <div class="card-body">
